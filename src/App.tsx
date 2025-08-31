@@ -1,15 +1,38 @@
-import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Navbar from './Navbar';
+import Hello from './components/Hello';
+import ListGroup from './components/ListGroup';
+import Alert from './components/Alert';
+import Button from './components/Button';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const items = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
 
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
+
+  const [alertVisible, setAlertVisibility] = useState(false);
   return (
-    <>
+    <div>
       <Navbar />
+      <div>
+        <Hello />
+      </div>
+      <ListGroup items={items} heading={'Cities'} onSelectItem={handleSelectItem} />
+
+      <div>
+        {alertVisible && <Alert onClose={() => setAlertVisibility(false)}>My alert</Alert>}
+        <Button
+          color="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          onClick={() => setAlertVisibility(true)}
+        >
+          Click me!
+        </Button>
+      </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -18,15 +41,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1 className="text-red-500">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </div>
   );
 }
 
