@@ -4,19 +4,42 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <Button color="inherit" component={Link} to="/" sx={{ ml: 2 }}>
-          Home
-        </Button>
-        <Button color="inherit" component={Link} to="About" sx={{ ml: 2 }}>
-          About
-        </Button>
-        <Button color="inherit" component={Link} to="Contact" sx={{ ml: 2 }}>
-          Contact
-        </Button>
-      </Toolbar>
-    </AppBar>
+    <>
+      <header className="navbar-wrapper">
+        <div className="navbar-container">
+          {/* Logo */}
+          {/* <Link to="/" className="navbar-logo-container">
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </Link> */}
+
+          {/* Menu główne */}
+          <nav className="navbar-menu">
+            <Link to="/" className="navbar-link">
+              Home
+            </Link>
+            <Link to="About" className="navbar-link">
+              About
+            </Link>
+            <Link to="/" className="navbar-link">
+              Services
+            </Link>
+            <Link to="Contact" className="navbar-link">
+              Contact
+            </Link>
+          </nav>
+
+          {/* Ikony / Akcje */}
+          <div className="navbar-icons">
+            <Link to="/" className="navbar-link">
+              XXXX
+            </Link>
+            <Link to="/" className="navbar-link">
+              XXXX
+            </Link>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
 
