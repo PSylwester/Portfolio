@@ -13,13 +13,16 @@ interface NavbarProps {
 
 export function Navbar({
   logo,
-  logoText = 'Brand',
+  logoText = 'Sylwester',
   navItems = [
     { label: 'Home', link_to: '/' },
     { label: 'About', link_to: '/about' },
     { label: 'Contact', link_to: '/contact' },
   ],
 }: NavbarProps) {
+  const [isDark, setIsDark] = useState(false);
+
+  const toggle = () => setIsDark(!isDark);
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -56,11 +59,17 @@ export function Navbar({
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-2">ikona dark/light</div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <span className="">ikona dark/light</span>
+          <div
+            className={`cursor-pointer w-20 h-10 drop-shadow-2xl flex items-center rounded-full transition-colors duration-1000 ease ${
+              isDark ? 'bg-gray-900' : 'bg-gray-400'
+            }`}
+            onClick={toggle}
+          >
+            <div
+              className={`w-7 h-7 rounded-full shadow-2xl transform transition-transform duration-1000 ${
+                isDark ? 'translate-x-11 bg-white cień-light' : 'translate-x-2 bg-black cień-dark'
+              }`}
+            ></div>
           </div>
         </div>
       </div>
