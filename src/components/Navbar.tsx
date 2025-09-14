@@ -59,17 +59,8 @@ export function Navbar({
           </div>
 
           {/* Desktop Actions */}
-          <div
-            className={`cursor-pointer w-20 h-10 drop-shadow-2xl flex items-center rounded-full transition-colors duration-1000 ease ${
-              isDark ? 'bg-gray-900' : 'bg-gray-400'
-            }`}
-            onClick={toggle}
-          >
-            <div
-              className={`w-7 h-7 rounded-full shadow-2xl transform transition-transform duration-1000 ${
-                isDark ? 'translate-x-11 bg-white cień-light' : 'translate-x-2 bg-black cień-dark'
-              }`}
-            ></div>
+          <div className={`toggle-container ${isDark ? 'dark' : 'light'}`} onClick={toggle}>
+            <div className="toggle-circle"></div>
           </div>
         </div>
       </div>
