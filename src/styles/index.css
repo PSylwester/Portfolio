@@ -10,6 +10,80 @@
   }
 }
 
+/* .cień-dark {
+  -webkit-box-shadow: -50px 0px 20px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: -50px 0px 20px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: -50px 0px 20px -10px rgba(0, 0, 0, 0.7);
+}
+.cień-light {
+  -webkit-box-shadow: -50px 0px 20px -10px rgba(255, 255, 255, 0.7);
+  -moz-box-shadow: -50px 0px 20px -10px rgba(255, 255, 255, 0.7);
+  box-shadow: -50px 0px 20px -10px rgba(255, 255, 255, 0.7);
+} */
+.cień-dark {
+  -webkit-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
+  box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 1);
+}
+
+.cień-light {
+  -webkit-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
+  -moz-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 1);
+}
+/* Kontener */
+.toggle-container {
+  cursor: pointer;
+  width: 80px;
+  height: 40px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 1s ease,
+    background-color 1s ease,
+    box-shadow 1s ease;
+}
+
+.toggle-container.light {
+  background-color: #9ca3af; /* gray-400 */
+}
+
+.toggle-container.dark {
+  background-color: #111827; /* gray-900 */
+}
+
+/* Kulka */
+.toggle-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 1s ease,
+    background-color 1s ease,
+    box-shadow 1s ease;
+}
+
+/* stan jasny */
+.toggle-container.light .toggle-circle {
+  background-color: black;
+  transform: translateX(8px); /* lekko z lewej */
+  -webkit-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
+  box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 1);
+}
+
+/* stan ciemny */
+.toggle-container.dark .toggle-circle {
+  background-color: white;
+  transform: translateX(44px); /* przesunięcie w prawo */
+  -webkit-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
+  -moz-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 1);
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
