@@ -21,8 +21,14 @@ export function Navbar({
   ],
 }: NavbarProps) {
   const [isDark, setIsDark] = useState(false);
-
   const toggle = () => setIsDark(!isDark);
+
+  const [open, setOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setOpen((prev) => !prev);
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -57,7 +63,16 @@ export function Navbar({
               </NavLink>
             ))}
           </div>
-
+          {/* Hamburger menu */}
+          <div
+            className={`hamburger-icon md:hidden flex items-center ${open ? 'active' : ''}`}
+            onClick={toggleMenu}
+          >
+            <div className={`icon-1 ${open ? 'a' : ''}`}></div>
+            <div className={`icon-2 ${open ? 'c' : ''}`}></div>
+            <div className={`icon-3 ${open ? 'b' : ''}`}></div>
+            <div className="clear"></div>
+          </div>
           {/* Desktop Actions */}
           <div className={`toggle-container ${isDark ? 'dark' : 'light'}`} onClick={toggle}>
             <div className="toggle-circle"></div>
