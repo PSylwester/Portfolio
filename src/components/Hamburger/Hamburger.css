@@ -73,3 +73,6 @@
 .icon-2.c {
   opacity: 0;
 }
+.clear {
+  clear: both;
+}

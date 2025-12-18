@@ -9,7 +9,10 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import Navbar from '@/components/Navbar';
 
 import { useState } from 'react';
+
 import Hamburger from '@/components/Hamburger/Hamburger';
+import MobileMenu from '@/components/MobileMenu/MobileMenu';
+
 const App: FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
@@ -22,6 +25,7 @@ const App: FunctionComponent = () => {
         open={menuOpen}
         onToggle={() => setMenuOpen((prev) => !prev)}
       />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
       <Router />
     </BrowserRouter>
   );
