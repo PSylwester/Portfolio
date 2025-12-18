@@ -18,6 +18,7 @@ export const Home: FunctionComponent = () => {
     console.log(item);
   };
   const [alertVisible, setAlertVisibility] = useState(false);
+
   return (
     <div>
       {/* <Navbar /> */}
@@ -30,7 +31,7 @@ export const Home: FunctionComponent = () => {
           muted
           playsInline
         />
-        <div className="relative z-10 flex h-full items-center justify-center bg-black/50">
+        <div className="relative z-1 flex h-full items-center justify-center bg-black/50">
           <Container maxWidth="md" className="text-center text-white">
             <Typography
               variant="h3"
@@ -71,6 +72,7 @@ export const Home: FunctionComponent = () => {
                   3000,
                   '"Can\'t sacrifice anyone for the greater good because WE ARE greater good"',
                   3000,
+                  '"We will see you again my friend"',
                 ]}
                 wrapper="span"
                 speed={50}

@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import { NavLink, Link } from 'react-router-dom';
 import React, { useState } from 'react';
-
+import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 interface NavbarProps {
   logo?: string;
   logoText?: string;
@@ -21,8 +21,8 @@ export function Navbar({
   ],
 }: NavbarProps) {
   const [isDark, setIsDark] = useState(false);
-
   const toggle = () => setIsDark(!isDark);
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -43,7 +43,7 @@ export function Navbar({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
+            {DEFAULT_NAV_ITEMS.map((item, index) => (
               <NavLink
                 key={index}
                 to={item.link_to}
@@ -57,7 +57,6 @@ export function Navbar({
               </NavLink>
             ))}
           </div>
-
           {/* Desktop Actions */}
           <div className={`toggle-container ${isDark ? 'dark' : 'light'}`} onClick={toggle}>
             <div className="toggle-circle"></div>

@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/* === Hamburger Menu === */
+.icons.black {
+  background-color: black;
+}
+.icons.white {
+  background-color: white;
+}
+.icons.red {
+  background-color: red;
+}
+.icons.green {
+  background-color: green;
+}
+.icons.blue {
+  background-color: blue;
+}
+.icons.yellow {
+  background-color: yellow;
+}
+.icons.grey {
+  background-color: grey;
+}
+.icon-1,
+.icon-2,
+.icon-3 {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 32px;
+  height: 3px;
+  background-color: black;
+  transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
+}
+
+.icon-1 {
+  transform: translateY(-8px);
+}
+
+.icon-3 {
+  transform: translateY(8px);
+}
+
+.hamburger-icon {
+  position: fixed;
+  z-index: 9999;
+  top: 76px;
+  left: 16px;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* animacje po kliknięciu */
+.icon-1.a {
+  transform: rotate(45deg);
+}
+
+.icon-3.b {
+  transform: rotate(-45deg);
+}
+
+.icon-2.c {
+  opacity: 0;
+}
+.clear {
+  clear: both;
+}
