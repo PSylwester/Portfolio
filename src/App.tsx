@@ -1,11 +1,11 @@
 import './styles/index.css';
 
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { Router } from './router/router';
 
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 import Navbar from '@/components/Navbar';
 
 import { useState } from 'react';
@@ -15,18 +15,29 @@ import MobileMenu from '@/components/MobileMenu/MobileMenu';
 
 const App: FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up(768));
+
+  useEffect(() => {
+    if (isDesktop) {
+      setMenuOpen(false);
+    }
+  }, [isDesktop]);
   return (
     <BrowserRouter>
-      <CssBaseline />
-      <Navbar />
-      <Hamburger
-        className="md:hidden flex items-center"
-        icons="black"
-        open={menuOpen}
-        onToggle={() => setMenuOpen((prev) => !prev)}
-      />
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <Router />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Navbar />
+        <Hamburger
+          className="md:hidden flex items-center"
+          icons="black"
+          open={menuOpen}
+          onToggle={() => setMenuOpen((prev) => !prev)}
+        />
+        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+        <Router />
+      </ThemeProvider>
     </BrowserRouter>
   );
 };
