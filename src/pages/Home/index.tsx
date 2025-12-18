@@ -18,6 +18,7 @@ export const Home: FunctionComponent = () => {
     console.log(item);
   };
   const [alertVisible, setAlertVisibility] = useState(false);
+
   return (
     <div>
       {/* <Navbar /> */}
@@ -71,6 +72,7 @@ export const Home: FunctionComponent = () => {
                   3000,
                   '"Can\'t sacrifice anyone for the greater good because WE ARE greater good"',
                   3000,
+                  '"We will see you again my friend"',
                 ]}
                 wrapper="span"
                 speed={50}
