@@ -1,7 +1,3 @@
-// import Navbar from './components/Navbar';
-// import Hello from './components/Hello';
-// import ListGroup from './components/ListGroup';
-// import Alert from '../components/Alert';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Container, Typography } from '@mui/material';
@@ -10,6 +6,9 @@ import { Link } from 'react-router-dom';
 import Icon from '@mui/material/Icon';
 import { FunctionComponent } from 'react';
 import { Box } from '@mui/material';
+import ProjectShowcase from '../../components/ProjectShowcase';
+import ContactForm from '../../components/ContactForm';
+import Footer from '../../components/Footer';
 
 export const Home: FunctionComponent = () => {
   const items = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
@@ -21,7 +20,6 @@ export const Home: FunctionComponent = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <main className="relative h-screen w-full overflow-hidden">
         <video
           className="absolute top-0 left-0 h-full w-full object-cover"
@@ -82,35 +80,15 @@ export const Home: FunctionComponent = () => {
           </Container>
         </div>
       </main>
-      {/* 🔽 TEST SECTION to verify sticky navbar */}
-      <section className="bg-gray-100 py-20 px-4 text-gray-700">
-        <Container maxWidth="md">
-          <Typography variant="h4" gutterBottom>
-            Test Section
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisi vel
-            consectetur euismod, nisl nunc consectetur nisi, euismod euismod nisi nunc euismod nisl.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-            egestas.
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-            posuere cubilia curae; Morbi efficitur nisl at sapien vehicula, vel pulvinar nunc
-            viverra.
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Add more content here if needed to test the scroll behavior.
-          </Typography>
-        </Container>
-      </section>
-      {/* <div>
-        <Hello />
-      </div> */}
-      {/* <ListGroup items={items} heading={'Cities'} onSelectItem={handleSelectItem} /> */}
+
+      {/* Projects Section */}
+      <ProjectShowcase />
+
+      {/* Contact Section */}
+      <ContactForm />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
