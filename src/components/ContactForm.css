@@ -1,4 +1,5 @@
 /* === Contact Form Styles - Modern Dark Theme === */
+@reference "tailwindcss";
 
 .contact-section {
   @apply relative overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-gray-950;
