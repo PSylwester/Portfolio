@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Container, TextField, Button, Paper } from '@mui/material';
+import './ContactForm.css';
 
 interface ContactFormProps {
   onSubmit?: (data: FormData) => void;

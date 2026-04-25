@@ -102,56 +102,6 @@
     @apply px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 rounded-full text-sm font-medium border border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-300 cursor-default;
   }
 
-  /* === Contact Form Styles === */
-  .contact-section {
-    @apply relative overflow-hidden;
-  }
-
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-  }
-
-  .contact-title {
-    @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
-  }
-
-  .contact-form-paper {
-    @apply bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden relative;
-  }
-
-  .contact-form-paper::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-    background-size: 200% 200%;
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .contact-form-paper:hover::before {
-    opacity: 0.1;
-  }
-
-  .contact-input {
-    @apply bg-gray-50 border-gray-200 hover:border-blue-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 rounded-lg;
-  }
-
-  .contact-submit-btn {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
-  }
-
   /* === Animations === */
   @keyframes gradient {
     0% {
