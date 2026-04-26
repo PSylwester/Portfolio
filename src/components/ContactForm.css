@@ -100,7 +100,7 @@
 
 /* Modern dark submit button with glow */
 .contact-submit-btn {
-  @apply bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500
+  @apply bg-purple-600 hover:bg-purple-700
          text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300
          transform hover:scale-105 shadow-lg hover:shadow-purple-500/50
          border border-transparent hover:border-purple-400/50;
