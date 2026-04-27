@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Typography, Container, TextField, Button, Paper } from '@mui/material';
+import React from 'react';
+import { Container } from '@mui/material';
 import './ContactForm.css';
 
 interface ContactFormProps {
@@ -15,74 +15,105 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <section className="contact-section py-16 bg-white">
-      <Container maxWidth="lg" className="px-4">
-        <Typography
-          variant="h4"
-          gutterBottom
-          component="h2"
-          className="contact-title text-center mb-12"
-        >
-          Get In Touch
-        </Typography>
-
-        <Paper elevation={3} className="contact-form-paper max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6 p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <TextField
-                fullWidth
-                label="Name"
-                name="name"
-                required
-                variant="outlined"
-                size="medium"
-                className="contact-input"
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                name="email"
-                type="email"
-                required
-                variant="outlined"
-                size="medium"
-                className="contact-input"
-              />
+    <section className="contact-section relative overflow-hidden">
+      <Container maxWidth="lg" className="px-4 py-16">
+        <div className="contact-content-wrapper flex flex-col lg:flex-row items-center gap-12">
+          {/* Left side - Text content */}
+          <div className="contact-text-content text-left max-w-lg">
+            <div className="contact-heading text-4xl md:text-5xl font-bold leading-tight flex">
+              <span className="contact-heading-span">Let's Grab a Coffee (Virtual or Real!)</span>
+              <span className="inline-block">☕</span>
             </div>
+            <p className="contact-subheading mt-4 text-gray-300 text-lg">
+              Your project deserves personal attention.✨ I'd love to hear about it.
+            </p>
+            <p className="contact-description mt-6 text-gray-400">
+              Hi there!👋 Thanks for stopping by my space on the web. I believe your work—and the
+              ideas behind it—matter. That's why I'm here: to listen, help, and collaborate without
+              any corporate formalities. Whether you have a big idea or just a quick question, feel
+              free to drop me a line via email or message here ✒️. No pressure at all, just good
+              communication. I usually reply quickly, and who knows? Maybe one day we'll even meet
+              for a real coffee to brainstorm together! 😄
+            </p>
+          </div>
 
-            <TextField
-              fullWidth
-              label="Subject"
-              name="subject"
-              required
-              variant="outlined"
-              size="medium"
-              className="contact-input"
-            />
+          {/* Right side - Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="contact-form-container relative z-10 w-full max-w-md"
+          >
+            <div className="contact-form-glass">
+              <div className="contact-form-header mb-6">
+                <h3 className="contact-form-title text-xl font-semibold text-white">Contact Me!</h3>
+              </div>
 
-            <TextField
-              fullWidth
-              label="Message"
-              name="message"
-              multiline
-              rows={4}
-              required
-              variant="outlined"
-              size="medium"
-              className="contact-input"
-            />
+              <div className="contact-form-grid grid grid-cols-2 gap-4 mb-4">
+                <div className="contact-input-group">
+                  <label
+                    htmlFor="firstName"
+                    className="contact-label block text-sm text-gray-300 mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    className="contact-input-field"
+                    placeholder=" "
+                  />
+                </div>
+              </div>
 
-            <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              fullWidth
-              className="contact-submit-btn mt-6"
-            >
-              Send Message
-            </Button>
+              <div className="contact-input-group mb-4">
+                <label htmlFor="email" className="contact-label block text-sm text-gray-300 mb-2">
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="contact-input-field"
+                  placeholder=" "
+                />
+              </div>
+
+              <div className="contact-input-group mb-4">
+                <label htmlFor="topic" className="contact-label block text-sm text-gray-300 mb-2">
+                  Topic
+                </label>
+                <input
+                  type="text"
+                  id="topic"
+                  name="topic"
+                  className="contact-input-field"
+                  placeholder=" "
+                />
+              </div>
+
+              <div className="contact-input-group mb-6">
+                <label htmlFor="message" className="contact-label block text-sm text-gray-300 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  className="contact-input-field contact-textarea"
+                  placeholder=" "
+                ></textarea>
+              </div>
+              <div className="flex justify-end">
+                <button type="submit" className="contact-submit-btn">
+                  👋 Say "Hello"
+                </button>
+              </div>
+            </div>
           </form>
-        </Paper>
+        </div>
       </Container>
     </section>
   );
