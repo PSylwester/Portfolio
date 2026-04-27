@@ -15,7 +15,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <section className="contact-section relative overflow-hidden">
+    <section className="contact-section relative overflow-hidden flex items-center justify-center h-full">
       <Container maxWidth="lg" className="px-4 py-16">
         <div className="contact-content-wrapper flex flex-col lg:flex-row items-center gap-12">
           {/* Left side - Text content */}
@@ -47,23 +47,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                 <h3 className="contact-form-title text-xl font-semibold text-white">Contact Me!</h3>
               </div>
 
-              <div className="contact-form-grid grid grid-cols-2 gap-4 mb-4">
-                <div className="contact-input-group">
-                  <label
-                    htmlFor="firstName"
-                    className="contact-label block text-sm text-gray-300 mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="contact-input-field"
-                    placeholder=" "
-                  />
-                </div>
+              <div className="contact-input-group mb-4">
+                <label htmlFor="name" className="contact-label block text-sm text-gray-300 mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="contact-input-field"
+                  placeholder=" "
+                />
               </div>
 
               <div className="contact-input-group mb-4">
