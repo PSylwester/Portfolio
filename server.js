@@ -60,7 +60,7 @@ app.post('/api/send-email', async (req, res) => {
       from: `"Portfolio" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       replyTo: email,
-      subject: `Nowa wiadomość od ${name} - ${topic}`,
+      subject: `PORTFOLIO: Nowa wiadomość od ${name} - ${topic}`,
       text: `
 Imię: ${name}
 Email: ${email}
