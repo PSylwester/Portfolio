@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '@mui/material';
 import './ContactForm.css';
 
@@ -7,10 +7,55 @@ interface ContactFormProps {
 }
 
 export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSubmit) {
-      onSubmit(e.currentTarget as unknown as FormData);
+  // 1. Stan przechowujący dane wstępnie wypełnione formularza
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    topic: '',
+    message: '',
+  });
+
+  // Stan dla komunikatów i procesu ładowania
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Obsługa zmiany inputów - podtrzymuje dane w stanach
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Główna funkcja wysyłania do backendu
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Zapobiega odświeżeniu strony
+    setLoading(true);
+    setError(null);
+
+    try {
+      // WYSYŁKA DO SERWERA (localhost:5000 to domyślny port backendu)
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Oznacza, że wysyłamy JSON
+        },
+        body: JSON.stringify(formData), // Przekształca stan w obiekt JSON
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('✅ Wiadomość wysłana pomyślnie!');
+
+        // Resetuj formularz po sukcesie
+        setFormData({ name: '', email: '', topic: '', message: '' });
+      } else {
+        setError(data.error || 'Błąd serwera');
+      }
+    } catch (err) {
+      console.error('Wystąpił błąd:', err);
+      setError('Nie udało się nawiązać połączenia z serwerem.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,6 +103,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                   required
                   className="contact-input-field"
                   placeholder=" "
+                  value={formData.name}
+                  onChange={handleChange}
+                  disabled={loading} // Blokuje inputy podczas wysyłania, aby uniknąć duplikatów
                 />
               </div>
 
@@ -72,6 +120,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                   required
                   className="contact-input-field"
                   placeholder=" "
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -83,8 +134,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                   type="text"
                   id="topic"
                   name="topic"
+                  required
                   className="contact-input-field"
                   placeholder=" "
+                  value={formData.topic}
+                  onChange={handleChange}
+                  disabled={loading}
                 />
               </div>
 
@@ -96,16 +151,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
                   id="message"
                   name="message"
                   required
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={4}
                   className="contact-input-field contact-textarea"
                   placeholder=" "
+                  disabled={loading}
                 ></textarea>
               </div>
+              {/* Przycisk z stanem */}
               <div className="flex justify-end">
-                <button type="submit" className="contact-submit-btn">
-                  👋 Say "Hello"
+                <button type="submit" className="contact-submit-btn" disabled={loading}>
+                  {loading ? '👋 Sending...' : '👋 Say "Hello"'}
                 </button>
               </div>
+              {/* 3. Obsługa błędu (jeśli wystąpi) */}
+              {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
             </div>
           </form>
         </div>
