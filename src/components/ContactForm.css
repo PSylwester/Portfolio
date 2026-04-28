@@ -1,8 +1,9 @@
-/* === Contact Form Styles - Modern Dark Theme === */
+/* === Contact Form Styles - Glassmorphism Dark Theme === */
 @reference "tailwindcss";
 
 .contact-section {
   @apply relative overflow-hidden bg-gradient-to-br from-gray-900 via-slate-900 to-gray-950;
+  min-height: 100vh;
 }
 
 /* Animated background glow effect */
@@ -14,9 +15,9 @@
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
-  animation: rotateGlow 15s linear infinite;
+    radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+  animation: rotateGlow 20s linear infinite;
   pointer-events: none;
 }
 
@@ -29,90 +30,151 @@
   }
 }
 
-.contact-title {
-  @apply text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-teal-400 bg-clip-text text-transparent relative z-10;
-  text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
+.contact-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.contact-form-paper {
-  @apply bg-gray-800/40 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-700/50 overflow-hidden relative z-10;
+@media (min-width: 1024px) {
+  .contact-content-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.contact-text-content {
+  text-align: left;
+}
+
+.contact-heading {
+  @apply text-4xl md:text-5xl font-bold leading-tight text-white mb-2;
+}
+.contact-heading-span {
+  color: #ffffff;
+  background: linear-gradient(to bottom, #59c5a1 50%, #ffffff 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contact-subheading {
+  @apply text-xl font-semibold text-white;
+}
+
+.contact-description {
+  @apply text-lg text-gray-400 mt-6;
+}
+
+/* Form container with glassmorphism */
+.contact-form-container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.contact-form-glass {
+  @apply bg-white/5 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 overflow-hidden;
   box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.7),
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animated gradient border with glow */
-.contact-form-paper::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(90deg, #7c3aed, #db2777, #14b8a6, #7c3aed);
-  background-size: 200% 200%;
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: gradientShift 3s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.contact-form-paper:hover::before {
-  opacity: 0.3;
-}
-
-.contact-form-paper:hover {
+.contact-form-glass:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 30px 60px -12px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(124, 58, 237, 0.2);
+    0 30px 60px -12px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(139, 92, 246, 0.15);
 }
 
-/* Modern dark input fields with floating label effect */
-.contact-input {
-  @apply bg-gray-900/60 border-gray-600/50 text-gray-100 placeholder-gray-500
-         hover:border-purple-500/50 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/30
-         transition-all duration-300 rounded-lg;
+.contact-form-header {
+  padding: 1.5rem 2rem 1rem;
+}
+
+.contact-form-title {
+  @apply text-xl font-semibold text-white mb-0;
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-input-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.contact-label {
+  @apply block text-sm text-gray-300 mb-2;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-input-field {
+  @apply bg-white/5 border-white/10 text-white placeholder-transparent
+         hover:border-white/20 focus:border-purple-400/50 focus:ring-2 focus:ring-purple-400/30
+         transition-all duration-300 rounded-lg px-4 py-3;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.contact-input:hover {
+.contact-input-field:hover {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 0 1px rgba(139, 92, 246, 0.3);
+    0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
-.contact-input:focus {
+.contact-input-field:focus {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 0 0 1px rgba(139, 92, 246, 0.5),
-    0 0 20px rgba(139, 92, 246, 0.2);
+    0 0 20px rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.5);
 }
 
-/* Modern dark submit button with glow */
+.contact-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Submit button with glassmorphism */
 .contact-submit-btn {
-  @apply bg-purple-600 hover:bg-purple-700
-         text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300
-         transform hover:scale-105 shadow-lg hover:shadow-purple-500/50
-         border border-transparent hover:border-purple-400/50;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  @apply bg-white/10 hover:bg-white/20
+         text-white font-semibold py-4 px-6 rounded-full transition-all duration-300
+         transform hover:scale-105 shadow-lg border border-white/20;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .contact-submit-btn:hover {
   box-shadow:
-    0 6px 25px rgba(124, 58, 237, 0.5),
-    0 0 40px rgba(139, 92, 246, 0.3);
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(139, 92, 246, 0.2);
 }
 
 .contact-submit-btn:active {
   transform: scale(0.98);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-form-container {
+    max-width: 100%;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-heading {
+    @apply text-3xl;
+  }
 }
