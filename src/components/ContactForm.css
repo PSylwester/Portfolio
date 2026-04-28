@@ -144,24 +144,56 @@
   min-height: 120px;
 }
 
-/* Submit button with glassmorphism */
+/* Submit button with neon glow effect */
 .contact-submit-btn {
   margin-bottom: 2rem;
   margin-right: 2rem;
-  @apply bg-white/10 hover:bg-white/20
-         text-white font-semibold py-4 px-6 rounded-full transition-all duration-300
-         transform hover:scale-105 shadow-lg border border-white/20;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  @apply bg-black/40 text-cyan-300 font-semibold py-4 px-6 rounded-[2.5rem] transition-all duration-300
+         border-2 border-cyan-400 shadow-lg;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 10px rgba(34, 211, 238, 0.5),
+    0 0 20px rgba(34, 211, 238, 0.3),
+    inset 0 0 10px rgba(34, 211, 238, 0.2);
+}
+
+.contact-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.6) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-submit-btn:hover::before {
+  opacity: 1;
 }
 
 .contact-submit-btn:hover {
   box-shadow:
-    0 6px 25px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(139, 92, 246, 0.2);
+    0 0 20px rgba(34, 211, 238, 0.8),
+    0 0 40px rgba(34, 211, 238, 0.6),
+    0 0 60px rgba(34, 211, 238, 0.4),
+    inset 0 0 20px rgba(34, 211, 238, 0.5);
+  border-color: #22d3ee;
+  transform: scale(1.05);
 }
 
 .contact-submit-btn:active {
   transform: scale(0.98);
+  box-shadow:
+    0 0 15px rgba(34, 211, 238, 0.6),
+    inset 0 0 15px rgba(34, 211, 238, 0.4);
+}
+
+.contact-submit-btn span {
+  position: relative;
+  z-index: 1;
 }
 
 /* Responsive adjustments */

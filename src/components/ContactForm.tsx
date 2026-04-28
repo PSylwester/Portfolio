@@ -162,7 +162,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
               {/* Przycisk z stanem */}
               <div className="flex justify-end">
                 <button type="submit" className="contact-submit-btn" disabled={loading}>
-                  {loading ? '👋 Sending...' : '👋 Say "Hello"'}
+                  <span>{loading ? '👋 Sending...' : '👋 Say "Hello"'}</span>
                 </button>
               </div>
               {/* 3. Obsługa błędu (jeśli wystąpi) */}
