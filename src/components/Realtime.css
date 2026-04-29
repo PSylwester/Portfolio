@@ -7,11 +7,11 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    0 0 40px rgba(91, 33, 182, 0.2);
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 30px rgba(91, 33, 182, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
   animation: floatIn 0.6s ease-out;
@@ -23,8 +23,8 @@
     background: rgba(31, 41, 55, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(91, 33, 182, 0.3);
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(91, 33, 182, 0.2);
   }
 }
 
@@ -43,32 +43,32 @@
 /* Hover Effect */
 .realtime-container:hover {
   box-shadow:
-    0 12px 48px rgba(0, 0, 0, 0.2),
-    0 0 60px rgba(91, 33, 182, 0.3);
+    0 6px 28px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(91, 33, 182, 0.2);
   transform: translateY(-2px);
 }
 
 /* Time Display - Solid Color with Shadow */
 .realtime-time {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: #6b21a8;
+  color: #000000;
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.05),
-    0 2px 4px rgba(107, 33, 168, 0.2);
+    0 2px 4px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   margin: 0;
 }
 
 /* Date Display - Subtle Style */
 .realtime-date {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #6b7280;
   text-align: center;
-  margin: 0.5rem 0 0 0;
+  margin: 0.4rem 0 0 0;
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -81,10 +81,10 @@
   right: -2px;
   bottom: -2px;
   background: linear-gradient(to bottom, #ffffff 25%, #59c5a1 100%);
-  border-radius: 22px;
+  border-radius: 18px;
   z-index: -1;
   opacity: 0.5;
-  filter: blur(8px);
+  filter: blur(6px);
   animation: glowPulse 3s ease-in-out infinite;
 }
 
@@ -106,15 +106,15 @@
     top: 100px;
     right: 20px;
     left: 20px;
-    padding: 1rem 1.5rem;
+    padding: 0.875rem 1.25rem;
   }
 
   .realtime-time {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .realtime-date {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -123,16 +123,16 @@
     top: 90px;
     right: 15px;
     left: 15px;
-    padding: 0.875rem 1.25rem;
-    border-radius: 16px;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
   }
 
   .realtime-time {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .realtime-date {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 }
 
