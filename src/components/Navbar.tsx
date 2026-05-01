@@ -48,8 +48,8 @@ export function Navbar({
                 key={index}
                 to={item.link_to}
                 className={({ isActive }) =>
-                  `transition-colors hover:text-orange-300 ${
-                    isActive ? 'text-orange-900 border-b-2 border-primary pb-1' : 'text-gray-700/60'
+                  `transition-colors hover:text-[#59c5a1] ${
+                    isActive ? 'text-[#59c5a1] border-b-2 border-primary pb-1' : 'text-gray-700/60'
                   }`
                 }
               >
