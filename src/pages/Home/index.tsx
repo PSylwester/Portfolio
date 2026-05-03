@@ -20,7 +20,7 @@ export const Home: FunctionComponent = () => {
 
   return (
     <div>
-      <main className="relative h-screen w-full overflow-hidden">
+      <main className="relative h-screen w-full overflow-hidden contact-section">
         <video
           className="absolute top-0 left-0 h-full w-full object-cover"
           src="/videos/sunset_boat_video.mp4"
@@ -29,7 +29,7 @@ export const Home: FunctionComponent = () => {
           muted
           playsInline
         />
-        <div className="relative z-1 flex h-full items-center justify-center bg-black/90">
+        <div className="relative z-1 flex h-full items-center justify-center bg-black/50">
           <Container maxWidth="md" className="text-center text-white">
             <Typography
               variant="h3"
