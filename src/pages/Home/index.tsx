@@ -20,7 +20,7 @@ export const Home: FunctionComponent = () => {
 
   return (
     <div>
-      <main className="relative h-screen w-screen overflow-hidden contact-section">
+      <main className="relative h-screen w-auto overflow-hidden contact-section">
         <video
           className="absolute top-0 h-full w-full object-cover"
           src="/videos/sunset_boat_video.mp4"
