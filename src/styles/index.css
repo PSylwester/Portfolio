@@ -133,6 +133,13 @@
   }
 }
 
+body {
+  margin: 0;
+
+  min-width: 320px;
+  min-height: 100vh;
+}
+
 /* .cień-dark {
   -webkit-box-shadow: -50px 0px 20px -10px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: -50px 0px 20px -10px rgba(0, 0, 0, 0.7);
@@ -220,13 +227,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
