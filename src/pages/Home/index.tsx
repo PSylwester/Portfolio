@@ -29,7 +29,7 @@ export const Home: FunctionComponent = () => {
           muted
           playsInline
         />
-        <div className="relative z-1 flex h-full items-center justify-center bg-black/50">
+        <div className="pt-16 relative z-1 flex h-full items-center justify-center bg-black/50">
           <Container maxWidth="md" className="text-center text-white">
             <Typography
               variant="h3"
