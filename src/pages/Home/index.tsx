@@ -20,16 +20,16 @@ export const Home: FunctionComponent = () => {
 
   return (
     <div>
-      <main className="relative h-screen w-full overflow-hidden contact-section">
+      <main className="relative h-screen w-auto overflow-hidden contact-section">
         <video
-          className="absolute top-0 left-0 h-full w-full object-cover"
+          className="absolute top-0 h-full w-full object-cover"
           src="/videos/sunset_boat_video.mp4"
           autoPlay
           loop
           muted
           playsInline
         />
-        <div className="relative z-1 flex h-full items-center justify-center bg-black/50">
+        <div className="pt-16 relative z-1 flex h-full items-center justify-center bg-black/50">
           <Container maxWidth="md" className="text-center text-white">
             <Typography
               variant="h3"
