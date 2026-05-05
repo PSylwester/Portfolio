@@ -31,7 +31,7 @@ export function Navbar({
           <div className="flex items-center space-x-4 text-[#59c5a1]">
             <a href="/" className="flex items-center space-x-2">
               {logo ? (
-                <img src={logo} alt={logoText} className="h-12 w-auto" />
+                <img src={logo} alt={logoText} className="h-16 w-auto" />
               ) : (
                 <div className="h-8 w-8 rounded bg-primary flex items-center justify-center">
                   <span className="font-bold text-sm">{logoText.charAt(0)}</span>
@@ -42,7 +42,7 @@ export function Navbar({
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 pr-20">
             {DEFAULT_NAV_ITEMS.map((item, index) => (
               <NavLink
                 key={index}
