@@ -24,32 +24,32 @@ export function Navbar({
   const toggle = () => setIsDark(!isDark);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo/Brand */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 text-[#59c5a1]">
             <a href="/" className="flex items-center space-x-2">
               {logo ? (
-                <img src={logo} alt={logoText} className="h-8 w-8" />
+                <img src={logo} alt={logoText} className="h-16 w-auto" />
               ) : (
                 <div className="h-8 w-8 rounded bg-primary flex items-center justify-center">
                   <span className="font-bold text-sm">{logoText.charAt(0)}</span>
                 </div>
               )}
-              <span className="font-bold text-lg">{logoText}</span>
+              <span className="font-bold text-xl">{logoText}</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 pr-20">
             {DEFAULT_NAV_ITEMS.map((item, index) => (
               <NavLink
                 key={index}
                 to={item.link_to}
                 className={({ isActive }) =>
                   `transition-colors hover:text-[#59c5a1] ${
-                    isActive ? 'text-[#59c5a1] border-b-2 border-primary pb-1' : 'text-gray-700/60'
+                    isActive ? 'text-[#59c5a1] border-b-2 border-primary pb-1' : 'text-white/80'
                   }`
                 }
               >
