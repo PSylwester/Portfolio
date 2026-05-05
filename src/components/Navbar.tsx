@@ -31,13 +31,13 @@ export function Navbar({
           <div className="flex items-center space-x-4 text-[#59c5a1]">
             <a href="/" className="flex items-center space-x-2">
               {logo ? (
-                <img src={logo} alt={logoText} className="h-8 w-8" />
+                <img src={logo} alt={logoText} className="h-12 w-auto" />
               ) : (
                 <div className="h-8 w-8 rounded bg-primary flex items-center justify-center">
                   <span className="font-bold text-sm">{logoText.charAt(0)}</span>
                 </div>
               )}
-              <span className="font-bold text-lg">{logoText}</span>
+              <span className="font-bold text-xl">{logoText}</span>
             </a>
           </div>
 
