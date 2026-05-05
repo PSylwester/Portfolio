@@ -39,7 +39,14 @@ const projects: Project[] = [
 
 export const ProjectShowcase: React.FC = () => {
   return (
-    <section className="project-section py-16 bg-gray-50">
+    <section className="project-section py-16 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+
       <Container maxWidth="lg">
         <Typography
           variant="h4"
@@ -50,7 +57,7 @@ export const ProjectShowcase: React.FC = () => {
           My Projects
         </Typography>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {projects.map((project) => (
             <div key={project.id} className="project-card group">
               <div className="p-6 relative">
