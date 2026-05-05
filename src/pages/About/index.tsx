@@ -111,9 +111,13 @@ export const About: FunctionComponent = () => {
                       key={index}
                       label={skill.name}
                       variant="outlined"
-                      className={`tech-badge ${
-                        skill.level === 5 ? 'border-blue-400 text-blue-400' : ''
-                      }`}
+                      className="tech-badge"
+                      sx={{
+                        ...(skill.level === 5 && {
+                          border: '1px solid #3b82f6',
+                          color: '#3b82f6',
+                        }),
+                      }}
                     />
                   ))}
                 </div>
