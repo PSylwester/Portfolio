@@ -61,8 +61,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
 
   return (
     <div>
-      <main className="relative h-screen w-auto overflow-hidden contact-section">
-        <div className="pt-16 relative z-2 flex h-full bg-black/50">
+      <main className="relative h-screen w-auto ">
+        <div className="pt-16 relative flex h-full ">
           <Container maxWidth="lg" className="px-4 py-16 ">
             <div className="contact-content-wrapper flex flex-col lg:flex-row items-center gap-12">
               {/* Left side - Text content */}
