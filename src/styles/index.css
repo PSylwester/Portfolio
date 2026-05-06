@@ -155,95 +155,6 @@
   .about-skill-chip {
     @apply px-4 py-2 border-2 rounded-full font-medium transition-all duration-300;
   }
-
-  /* === Animations === */
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  @keyframes blob-2 {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(-50px, 30px) scale(1.2);
-    }
-    66% {
-      transform: translate(20px, -20px) scale(0.8);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  @keyframes blob-3 {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(40px, 20px) scale(1.15);
-    }
-    66% {
-      transform: translate(-30px, -40px) scale(0.95);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  @keyframes blob-4 {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(-25px, -60px) scale(1.25);
-    }
-    66% {
-      transform: translate(45px, 15px) scale(0.85);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animate-blob-2 {
-    animation: blob-2 8s infinite;
-  }
-
-  .animate-blob-3 {
-    animation: blob-3 9s infinite;
-  }
-
-  .animate-blob-4 {
-    animation: blob-4 10s infinite;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-
-  .animation-delay-6000 {
-    animation-delay: 6s;
-  }
 }
 
 body {
@@ -263,7 +174,7 @@ body {
   -moz-box-shadow: -50px 0px 20px -10px rgba(255, 255, 255, 0.7);
   box-shadow: -50px 0px 20px -10px rgba(255, 255, 255, 0.7);
 } */
-.cień-dark {
+/* .cień-dark {
   -webkit-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
   -moz-box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 0.9);
   box-shadow: -1px 0 3px 1px rgba(0, 0, 0, 1);
@@ -273,7 +184,7 @@ body {
   -webkit-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
   -moz-box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 0.7);
   box-shadow: -1px 0 3px 1px rgba(255, 255, 255, 1);
-}
+} */
 /* Kontener */
 .toggle-container {
   cursor: pointer;
