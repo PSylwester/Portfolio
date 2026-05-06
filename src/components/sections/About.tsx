@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
-import { Container, Typography, Box, Chip } from '@mui/material';
+import { Typography, Box, Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+import { Container } from '../ui/Container';
 interface Skill {
   name: string;
   level: number; // 1-5
@@ -44,7 +44,7 @@ const experiences: Experience[] = [
 
 export default function About() {
   return (
-    <main className="relative min-h-screen py-16">
+    <Container className="relative min-h-screen py-16">
       {/* Header Section */}
       <section className="text-center mb-16 flex flex-col items-center justify-center">
         <Typography
@@ -65,7 +65,7 @@ export default function About() {
       </section>
 
       {/* Profile Card */}
-      <Box className="max-w-4xl mx-auto mb-16">
+      <Box className="mb-16">
         <div className="about-card bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
           <div className="p-8 md:p-12 ">
             <div className="flex flex-col items-center justify-center">
@@ -166,6 +166,6 @@ export default function About() {
           </button>
         </Link>
       </section>
-    </main>
+    </Container>
   );
 }
