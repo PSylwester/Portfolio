@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { FunctionComponent } from 'react';
-
+import { Container } from '../ui/Container';
 interface SocialLink {
   platform: string;
   url: string;
@@ -17,9 +17,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className=" text-white py-12">
+    <>
       <div className="border-t border-gray-800 pt-8 relative overflow-hidden"></div>
-      <Container maxWidth="lg" className="px-4">
+      <Container className="text-white py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
           <div>
@@ -77,6 +77,6 @@ export default function Footer() {
           </Typography>
         </div>
       </Container>
-    </footer>
+    </>
   );
 }
