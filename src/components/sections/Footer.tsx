@@ -13,11 +13,12 @@ const socialLinks: SocialLink[] = [
   { platform: 'Twitter', url: '#' },
 ];
 
-export const Footer: FunctionComponent = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer-section bg-gray-900 text-white py-12">
+    <footer className=" text-white py-12">
+      <div className="border-t border-gray-800 pt-8 relative overflow-hidden"></div>
       <Container maxWidth="lg" className="px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
@@ -78,6 +79,4 @@ export const Footer: FunctionComponent = () => {
       </Container>
     </footer>
   );
-};
-
-export default Footer;
+}

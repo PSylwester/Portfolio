@@ -37,13 +37,13 @@ const projects: Project[] = [
   },
 ];
 
-export const ProjectShowcase: React.FC = () => {
+export default function Project() {
   return (
     <div>
-      <main className="relative h-auto w-auto overflow-hidden project-section">
+      <main className="">
         {/* Background decorative elements */}
 
-        <div className="py-16 relative z-1 flex h-full items-center justify-center bg-black/50">
+        <div className="py-16 relative flex h-full items-center justify-center ">
           <Container maxWidth="lg">
             <Typography
               variant="h4"
@@ -99,6 +99,4 @@ export const ProjectShowcase: React.FC = () => {
       </main>
     </div>
   );
-};
-
-export default ProjectShowcase;
+}
