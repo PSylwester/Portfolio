@@ -6,8 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/router';
 
 import { CssBaseline, ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
-import Navbar from '@/components/Navbar';
-import logo from '@/assets/SP_Signature_Logo.png';
 
 import { useState } from 'react';
 
@@ -30,7 +28,6 @@ const App: FunctionComponent = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar logo={logo} />
         <Hamburger
           className="md:hidden flex items-center"
           icons="black"
