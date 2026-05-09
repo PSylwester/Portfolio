@@ -1,17 +1,13 @@
-import './styles/index.css';
-
 import { FunctionComponent, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
 import { Router } from './router/router';
 
-import { CssBaseline, ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
+import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
 import Hamburger from '@/components/Hamburger/Hamburger';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
-import Realtime from './components/Realtime';
 
 const App: FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,14 +23,12 @@ const App: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
         <Hamburger
           className="md:hidden flex items-center"
           icons="black"
           open={menuOpen}
           onToggle={() => setMenuOpen((prev) => !prev)}
         />
-        <Realtime />
         <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
         <Router />
       </ThemeProvider>

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
-import { Typography, Box, Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Container } from '../ui/Container';
+import { Code2, Briefcase, User } from 'lucide-react';
 interface Skill {
   name: string;
   level: number; // 1-5
@@ -44,128 +44,90 @@ const experiences: Experience[] = [
 
 export default function About() {
   return (
-    <Container className="relative min-h-screen py-16">
-      {/* Header Section */}
-      <section className="text-center mb-16 flex flex-col items-center justify-center">
-        <Typography
-          variant="h2"
-          component="h1"
-          gutterBottom
-          className="landing_title text-4xl md:text-5xl font-bold mb-6 mx-auto pt-16"
-        >
-          About Me
-        </Typography>
-        <Typography
-          variant="h6"
-          className="text-xl md:text-2xl mx-auto text-gray-300 max-w-3xl text-center px-4"
-        >
+    <Container className="relative py-24">
+      {/* Nagłówek sekcji - wyrównany do lewej dla spójności */}
+      <header className="mb-16">
+        <h2 className="landing_title text-4xl md:text-6xl font-bold mb-6">
+          About <span className="text-blue-500">Me</span>
+        </h2>
+        <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
           Passionate developer crafting beautiful and functional digital experiences with modern
           technologies.
-        </Typography>
-      </section>
+        </p>
+      </header>
 
-      {/* Profile Card */}
-      <Box className="mb-16">
-        <div className="about-card bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
-          <div className="p-8 md:p-12 ">
-            <div className="flex flex-col items-center justify-center">
-              <Typography variant="h4" component="h2" gutterBottom className="landing_title mb-8 ">
-                Who I Am
-              </Typography>
+      {/* Główny Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Lewa kolumna: Who I Am (Szklana karta) */}
+        <div className="lg:col-span-7 glass p-8 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden group">
+          {/* Subtelny blask w rogu karty po najechaniu */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 blur-[60px] group-hover:bg-blue-500/20 transition-colors duration-500" />
 
-              <Typography variant="body1" className=" text-gray-300 max-w-2xl text-center pb-4">
-                I'm a dedicated software developer with a passion for creating intuitive and
-                visually stunning web applications. With expertise in modern frontend technologies,
-                I transform complex problems into elegant solutions. When I'm not coding, you can
-                find me exploring new technologies, contributing to open-source projects, or sharing
-                knowledge with the developer community.
-              </Typography>
-            </div>
-            {/* Skills Section */}
-            <Box className="mb-8">
-              <Typography
-                variant="h6"
-                component="h3"
-                gutterBottom
-                className="text-lg font-semibold mb-4 text-gray-100"
+          <div className="flex items-center gap-3 mb-6 text-blue-400">
+            <User size={24} />
+            <h3 className="text-2xl font-bold text-white">Who I Am</h3>
+          </div>
+
+          <p className="text-gray-300 leading-relaxed text-lg">
+            I'm a dedicated software developer with a passion for creating intuitive and visually
+            stunning web applications. I transform complex problems into elegant solutions.
+          </p>
+          <p className="mt-4 text-gray-400 italic">
+            "When I'm not coding, I'm usually exploring new tech or sharing knowledge."
+          </p>
+        </div>
+
+        {/* Prawa kolumna: Skills */}
+        <div className="lg:col-span-5 glass p-8 rounded-3xl border border-white/10">
+          <div className="flex items-center gap-3 mb-8 text-purple-400">
+            <Code2 size={24} />
+            <h3 className="text-xl font-bold text-white">Technical Skills</h3>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
+                  ${
+                    skill.level === 5
+                      ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+                      : 'bg-white/5 text-gray-400 border border-white/10'
+                  } hover:scale-105 hover:bg-white/10`}
               >
-                Technical Skills
-              </Typography>
-              <div className="flex flex-wrap gap-3 justify-center">
-                {skills.map((skill, index) => (
-                  <Chip
-                    key={index}
-                    label={skill.name}
-                    variant="outlined"
-                    className="tech-badge"
-                    sx={{
-                      ...(skill.level === 5 && {
-                        border: '1px solid #3b82f6',
-                        color: '#3b82f6',
-                      }),
-                    }}
-                  />
-                ))}
-              </div>
-            </Box>
-
-            {/* Experience Section */}
-            <Box>
-              <Typography
-                variant="h6"
-                component="h3"
-                gutterBottom
-                className="text-lg font-semibold mb-4 text-gray-100"
-              >
-                Work Experience
-              </Typography>
-              <div className="space-y-4 max-w-xl mx-auto">
-                {experiences.map((exp, index) => (
-                  <Box
-                    key={index}
-                    className="border-l-4 border-gradient-to-r from-blue-500 to-purple-500 pl-4 py-2 bg-gray-700/30 rounded-r-lg"
-                  >
-                    <Typography
-                      variant="subtitle1"
-                      component="h4"
-                      className="font-semibold text-gray-100"
-                    >
-                      {exp.role}
-                    </Typography>
-                    <Typography variant="body2" className="text-blue-400 mb-1">
-                      {exp.company} • {exp.period}
-                    </Typography>
-                    <Typography variant="body2" className="text-gray-300">
-                      {exp.description}
-                    </Typography>
-                  </Box>
-                ))}
-              </div>
-            </Box>
+                {skill.name}
+              </span>
+            ))}
           </div>
         </div>
-      </Box>
 
-      {/* CTA Section */}
-      <section className="text-center mt-12">
-        <Link to="/contact">
-          <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
-            Get In Touch
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </Link>
-      </section>
+        {/* Dolny wiersz: Experience (Szeroka szklana karta) */}
+        <div className="lg:col-span-12 glass p-8 md:p-10 rounded-3xl border border-white/10">
+          <div className="flex items-center gap-3 mb-8 text-pink-400">
+            <Briefcase size={24} />
+            <h3 className="text-xl font-bold text-white">Work Experience</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="group relative pl-6 border-l-2 border-white/10 hover:border-blue-500 transition-colors"
+              >
+                <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-white/20 group-hover:bg-blue-500 transition-colors" />
+                <h4 className="font-bold text-gray-100">{exp.role}</h4>
+                <div className="text-sm text-blue-400 mb-2">
+                  {exp.company} • {exp.period}
+                </div>
+                <p className="text-gray-400 text-sm leading-relaxed">{exp.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Akcent dekoracyjny w tle sekcji */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </Container>
   );
 }

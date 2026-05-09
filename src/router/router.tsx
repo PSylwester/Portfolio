@@ -5,7 +5,7 @@ import Home from '@/pages/Home/HomePage'; // <- Importujemy stronę główną z 
 export const Router: FunctionComponent = () => {
   return (
     <>
-      <Home /> {/* Renderujemy cały plik HomePage, który zawiera sekcje */}
+      <Home />
     </>
   );
 };

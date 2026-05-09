@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import './Contact.css';
 import { Container } from '../ui/Container';
-interface ContactFormProps {
-  onSubmit?: (data: FormData) => void;
-}
-
-export default function ContactForm({ onSubmit }: ContactFormProps) {
-  // 1. Stan przechowujący dane wstępnie wypełnione formularza
+import { Realtime } from './Realtime'; // Twój nowy komponent zegara
+import { Send, Coffee, Mail, MessageSquare } from 'lucide-react'; // Ikony dla lepszego UX
+export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,44 +10,34 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     message: '',
   });
 
-  // Stan dla komunikatów i procesu ładowania
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Obsługa zmiany inputów - podtrzymuje dane w stanach
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Główna funkcja wysyłania do backendu
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Zapobiega odświeżeniu strony
+    e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      // WYSYŁKA DO SERWERA (localhost:5000 to domyślny port backendu)
       const response = await fetch('http://localhost:5000/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
       if (response.ok) {
         alert('✅ Wiadomość wysłana pomyślnie!');
-
-        // Resetuj formularz po sukcesie
         setFormData({ name: '', email: '', topic: '', message: '' });
       } else {
+        const data = await response.json();
         setError(data.error || 'Błąd serwera');
       }
     } catch (err) {
-      console.error('Wystąpił błąd:', err);
       setError('Nie udało się nawiązać połączenia z serwerem.');
     } finally {
       setLoading(false);
@@ -59,114 +45,140 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
   };
 
   return (
-    <Container className="py-16 min-h-screen">
-      <div className="contact-content-wrapper flex flex-col lg:flex-row items-center gap-12">
-        {/* Left side - Text content */}
-        <div className="contact-text-content text-left max-w-lg">
-          <div className="contact-heading text-4xl md:text-5xl font-bold leading-tight flex">
-            <span className="contact-heading-span">Let's Grab a Coffee (Virtual or Real!)</span>
-            <span className="inline-block">☕</span>
-          </div>
-          <p className="contact-subheading mt-4 text-gray-300 text-lg">
-            Your project deserves personal attention.✨ I'd love to hear about it.
-          </p>
-          <p className="contact-description mt-6 text-gray-400">
-            Hi there!👋 Thanks for stopping by my space on the web. I believe your work—and the
-            ideas behind it—matter. That's why I'm here: to listen, help, and collaborate without
-            any corporate formalities. Whether you have a big idea or just a quick question, feel
-            free to drop me a line via email or message here ✒️. No pressure at all, just good
-            communication. I usually reply quickly, and who knows? Maybe one day we'll even meet for
-            a real coffee to brainstorm together! 😄
-          </p>
-        </div>
+    <Container className="relative py-24 min-h-screen flex flex-col justify-center">
+      {/* Nagłówek sekcji */}
+      <header className="mb-16 text-left">
+        <h2 className="landing_title text-4xl md:text-6xl font-bold mb-6">
+          Get in <span className="text-blue-500">Touch</span>
+        </h2>
+      </header>
 
-        {/* Right side - Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="contact-form-container relative z-10 w-full max-w-md "
-        >
-          <div className="contact-form-glass">
-            <div className="contact-form-header mb-6">
-              <h3 className="contact-form-title text-xl font-semibold text-white">Contact Me!</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        {/* Lewa strona - Formularz (Szklany panel) */}
+        <div className="lg:col-span-7 order-2 lg:order-1">
+          <form
+            onSubmit={handleSubmit}
+            className="glass p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-400 ml-1">Your Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="John Doe"
+                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-400 ml-1">E-mail Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="john@example.com"
+                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                />
+              </div>
             </div>
 
-            <div className="contact-input-group mb-4">
-              <label htmlFor="name" className="contact-label block text-sm text-gray-300 mb-2">
-                Name
-              </label>
+            <div className="flex flex-col gap-2 mb-6">
+              <label className="text-sm font-medium text-gray-400 ml-1">Subject</label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                required
-                className="contact-input-field"
-                placeholder=" "
-                value={formData.name}
-                onChange={handleChange}
-                disabled={loading}
-              />
-            </div>
-
-            <div className="contact-input-group mb-4">
-              <label htmlFor="email" className="contact-label block text-sm text-gray-300 mb-2">
-                E-mail
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="contact-input-field"
-                placeholder=" "
-                value={formData.email}
-                onChange={handleChange}
-                disabled={loading}
-              />
-            </div>
-
-            <div className="contact-input-group mb-4">
-              <label htmlFor="topic" className="contact-label block text-sm text-gray-300 mb-2">
-                Topic
-              </label>
-              <input
-                type="text"
-                id="topic"
                 name="topic"
                 required
-                className="contact-input-field"
-                placeholder=" "
                 value={formData.topic}
                 onChange={handleChange}
                 disabled={loading}
+                placeholder="Project Inquiry"
+                className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
               />
             </div>
 
-            <div className="contact-input-group mb-6">
-              <label htmlFor="message" className="contact-label block text-sm text-gray-300 mb-2">
-                Message
-              </label>
+            <div className="flex flex-col gap-2 mb-8">
+              <label className="text-sm font-medium text-gray-400 ml-1">Message</label>
               <textarea
-                id="message"
                 name="message"
                 required
+                rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                rows={4}
-                className="contact-input-field contact-textarea"
-                placeholder=" "
                 disabled={loading}
-              ></textarea>
+                placeholder="Tell me about your idea..."
+                className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+              />
             </div>
-            {/* Przycisk z stanem */}
-            <div className="flex justify-end">
-              <button type="submit" className="contact-submit-btn" disabled={loading}>
-                <span>{loading ? '👋 Sending...' : '👋 Say "Hello"'}</span>
-              </button>
-            </div>
-            {/* 3. Obsługa błędu (jeśli wystąpi) */}
-            {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full md:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group disabled:opacity-50"
+            >
+              {loading ? 'Sending...' : 'Send Message'}
+              <Send
+                size={18}
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+              />
+            </button>
+
+            {error && <p className="mt-4 text-red-400 text-sm italic">{error}</p>}
+          </form>
+        </div>
+
+        {/* Prawa strona - Content & Info */}
+        <div className="lg:col-span-5 order-1 lg:order-2 space-y-10">
+          <div className="flex justify-start">
+            <Realtime />
           </div>
-        </form>
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold text-white flex items-center gap-3">
+              Let's Grab a Coffee <Coffee className="text-blue-500" />
+            </h3>
+            <p className="text-gray-400 text-lg leading-relaxed text-balance">
+              I believe your work—and the ideas behind it—matter. Whether you have a big idea or
+              just a quick question, I'm here to listen and collaborate.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 group">
+              <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                <Mail size={24} />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">
+                  Email Me
+                </p>
+                <p className="text-white font-medium">hello@yourportfolio.com</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 group">
+              <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                <MessageSquare size={24} />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Socials</p>
+                <p className="text-white font-medium">LinkedIn / GitHub / Twitter</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mały "easter egg" - status */}
+          <div className="glass p-6 rounded-2xl border border-white/5 inline-block">
+            <p className="text-sm text-gray-400 italic">
+              "I usually reply within 24 hours. Coffee's on me! ☕"
+            </p>
+          </div>
+        </div>
       </div>
     </Container>
   );
