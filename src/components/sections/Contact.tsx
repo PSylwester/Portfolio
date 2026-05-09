@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from '../ui/Container';
+import { Realtime } from './Realtime'; // Twój nowy komponent zegara
 import { Send, Coffee, Mail, MessageSquare } from 'lucide-react'; // Ikony dla lepszego UX
-
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -135,6 +135,9 @@ export default function ContactForm() {
 
         {/* Prawa strona - Content & Info */}
         <div className="lg:col-span-5 order-1 lg:order-2 space-y-10">
+          <div className="flex justify-start">
+            <Realtime />
+          </div>
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-white flex items-center gap-3">
               Let's Grab a Coffee <Coffee className="text-blue-500" />

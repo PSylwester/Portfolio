@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 import Hamburger from '@/components/Hamburger/Hamburger';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
-import Realtime from './components/Realtime';
 
 const App: FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +29,6 @@ const App: FunctionComponent = () => {
           open={menuOpen}
           onToggle={() => setMenuOpen((prev) => !prev)}
         />
-        <Realtime />
         <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
         <Router />
       </ThemeProvider>
