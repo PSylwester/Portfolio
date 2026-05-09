@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Container } from '../ui/Container';
 
@@ -41,25 +40,14 @@ const projects: Project[] = [
 export default function Project() {
   return (
     <Container className="relative py-16 min-h-screen">
-      <Typography
-        variant="h4"
-        gutterBottom
-        component="h2"
-        className="project-title text-center mb-12 pb-6"
-      >
-        My Projects
-      </Typography>
+      <div className="landing_title text-center text-2xl font-bold mb-8">My Projects</div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
         {projects.map((project) => (
           <div key={project.id} className="project-card group">
             <div className="p-6 relative">
-              <Typography variant="h5" gutterBottom className="project-title-text">
-                {project.title}
-              </Typography>
-              <Typography variant="body1" className="project-description">
-                {project.description}
-              </Typography>
+              <div className="project-title-text">{project.title}</div>
+              <div className="project-description">{project.description}</div>
               <div className="flex flex-wrap gap-2 mt-4">
                 {project.technologies.map((tech, index) => (
                   <span key={index} className="tech-badge">

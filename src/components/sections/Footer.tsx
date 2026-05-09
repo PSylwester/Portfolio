@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
 import { FunctionComponent } from 'react';
 import { Container } from '../ui/Container';
 interface SocialLink {
@@ -19,24 +18,20 @@ export default function Footer() {
   return (
     <>
       <div className="border-t border-gray-800 pt-8 relative overflow-hidden"></div>
-      <Container className="text-white py-12">
+      <Container className="py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <Typography variant="h6" gutterBottom className="footer-title text-xl mb-4">
-              Portfolio
-            </Typography>
-            <Typography variant="body2" className="text-gray-400 leading-relaxed">
+            <div className="footer-title text-xl mb-4">Portfolio</div>
+            <div className=" leading-relaxed">
               A place where you can find my projects and information about myself, my hobbies, and
               other stuff.
-            </Typography>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <Typography variant="h6" gutterBottom className="text-lg font-semibold mb-4">
-              Quick Links
-            </Typography>
+            <div className="text-lg font-semibold mb-4">Quick Links</div>
             <ul className="space-y-3">
               {['#home', '#about', '#projects', '#contact'].map((href, index) => (
                 <li key={index}>
@@ -50,9 +45,7 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <Typography variant="h6" gutterBottom className="text-lg font-semibold mb-4">
-              Connect With Me
-            </Typography>
+            <div className="text-lg font-semibold mb-4">Connect With Me</div>
             <div className="flex space-x-3">
               {socialLinks.map((link, index) => (
                 <a
@@ -72,9 +65,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="footer-copyright text-center">
-          <Typography variant="body2" className="text-gray-500">
-            © {currentYear} Portfolio. All rights reserved.
-          </Typography>
+          <div className="text-gray-500">© {currentYear} Portfolio. All rights reserved.</div>
         </div>
       </Container>
     </>

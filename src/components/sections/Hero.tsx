@@ -1,11 +1,7 @@
-import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { Typography } from '@mui/material';
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-router-dom';
-import Icon from '@mui/material/Icon';
 import { FunctionComponent } from 'react';
-import { Box } from '@mui/material';
 import { Container } from '../ui/Container';
 
 export default function Hero() {
@@ -17,38 +13,16 @@ export default function Hero() {
   const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
-    <Container className="text-center text-white pt-16 min-h-screen flex flex-col items-center justify-center relative">
-      <Typography
-        variant="h3"
-        className="landing_title"
-        sx={{
-          fontWeight: 'bold',
-          fontFamily: 'Georgia, serif',
-          fontSize: {
-            xs: '3rem',
-            sm: '4rem',
-            md: '5rem',
-            lg: '7rem',
-          },
-        }}
-      >
+    <Container className="flex flex-col items-center justify-center relative py-50 sm:py-60 lg:py-68">
+      <div className="landing_title text-[2.5rem] font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mx-auto ">
         Welcome to My Portfolio
-      </Typography>
+      </div>
 
-      <Typography
-        variant="h6"
-        className="pt-8 pb-4 text-spanish_orange-900/80"
-        sx={{
-          fontSize: {
-            xs: '1rem',
-            sm: '1.25rem',
-          },
-        }}
-      >
+      <div className="pt-8 pb-4 xs:text-lg sm:text-xl">
         A place where you can find my projects and informations about myself, my hobbies and other
         stuff.
-      </Typography>
-      <div className="my-6 text-xl font-light text-white-400">
+      </div>
+      <div className="my-6 text-xl font-light">
         <TypeAnimation
           sequence={[
             '"Pain doesn\'t go away... You just make room for it"',

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Typography, Box, Chip } from '@mui/material';
+import { Box, Chip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Container } from '../ui/Container';
 interface Skill {
@@ -44,24 +44,14 @@ const experiences: Experience[] = [
 
 export default function About() {
   return (
-    <Container className="relative min-h-screen py-16">
+    <Container className="relative py-16">
       {/* Header Section */}
       <section className="text-center mb-16 flex flex-col items-center justify-center">
-        <Typography
-          variant="h2"
-          component="h1"
-          gutterBottom
-          className="landing_title text-4xl md:text-5xl font-bold mb-6 mx-auto pt-16"
-        >
-          About Me
-        </Typography>
-        <Typography
-          variant="h6"
-          className="text-xl md:text-2xl mx-auto text-gray-300 max-w-3xl text-center px-4"
-        >
+        <div className="landing_title text-4xl md:text-5xl font-medium mx-auto ">About Me</div>
+        <div className="text-xl md:text-2xl mx-auto  max-w-3xl text-center px-4">
           Passionate developer crafting beautiful and functional digital experiences with modern
           technologies.
-        </Typography>
+        </div>
       </section>
 
       {/* Profile Card */}
@@ -69,28 +59,19 @@ export default function About() {
         <div className="about-card bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
           <div className="p-8 md:p-12 ">
             <div className="flex flex-col items-center justify-center">
-              <Typography variant="h4" component="h2" gutterBottom className="landing_title mb-8 ">
-                Who I Am
-              </Typography>
+              <div className="landing_title text-2xl font-bold mb-8 ">Who I Am</div>
 
-              <Typography variant="body1" className=" text-gray-300 max-w-2xl text-center pb-4">
+              <div className="text-gray-300 max-w-2xl text-center pb-4">
                 I'm a dedicated software developer with a passion for creating intuitive and
                 visually stunning web applications. With expertise in modern frontend technologies,
                 I transform complex problems into elegant solutions. When I'm not coding, you can
                 find me exploring new technologies, contributing to open-source projects, or sharing
                 knowledge with the developer community.
-              </Typography>
+              </div>
             </div>
             {/* Skills Section */}
             <Box className="mb-8">
-              <Typography
-                variant="h6"
-                component="h3"
-                gutterBottom
-                className="text-lg font-semibold mb-4 text-gray-100"
-              >
-                Technical Skills
-              </Typography>
+              <div className="text-lg font-semibold mb-4 text-gray-100">Technical Skills</div>
               <div className="flex flex-wrap gap-3 justify-center">
                 {skills.map((skill, index) => (
                   <Chip
@@ -111,33 +92,18 @@ export default function About() {
 
             {/* Experience Section */}
             <Box>
-              <Typography
-                variant="h6"
-                component="h3"
-                gutterBottom
-                className="text-lg font-semibold mb-4 text-gray-100"
-              >
-                Work Experience
-              </Typography>
+              <div className="text-lg font-semibold mb-4 text-gray-100">Work Experience</div>
               <div className="space-y-4 max-w-xl mx-auto">
                 {experiences.map((exp, index) => (
                   <Box
                     key={index}
                     className="border-l-4 border-gradient-to-r from-blue-500 to-purple-500 pl-4 py-2 bg-gray-700/30 rounded-r-lg"
                   >
-                    <Typography
-                      variant="subtitle1"
-                      component="h4"
-                      className="font-semibold text-gray-100"
-                    >
-                      {exp.role}
-                    </Typography>
-                    <Typography variant="body2" className="text-blue-400 mb-1">
+                    <div className="font-semibold text-gray-100">{exp.role}</div>
+                    <div className="text-blue-400 mb-1">
                       {exp.company} • {exp.period}
-                    </Typography>
-                    <Typography variant="body2" className="text-gray-300">
-                      {exp.description}
-                    </Typography>
+                    </div>
+                    <div className="text-gray-300">{exp.description}</div>
                   </Box>
                 ))}
               </div>

@@ -52,7 +52,7 @@
 .realtime-time {
   font-size: 2rem;
   font-weight: 700;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  /* font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; */
   color: #000000;
   text-shadow:
     0 1px 0 rgba(0, 0, 0, 0.05),
@@ -69,7 +69,7 @@
   color: #6b7280;
   text-align: center;
   margin: 0.4rem 0 0 0;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  /* font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; */
 }
 
 /* Decorative Glow Effect (matching landing_title gradient) */

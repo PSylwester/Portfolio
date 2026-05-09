@@ -1,11 +1,8 @@
-import './styles/index.css';
-
 import { FunctionComponent, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
 import { Router } from './router/router';
 
-import { CssBaseline, ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
+import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
 
 import { useState } from 'react';
 
@@ -27,7 +24,6 @@ const App: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
         <Hamburger
           className="md:hidden flex items-center"
           icons="black"

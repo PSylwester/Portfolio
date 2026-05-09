@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Contact.css';
 import { Container } from '../ui/Container';
 interface ContactFormProps {
   onSubmit?: (data: FormData) => void;
