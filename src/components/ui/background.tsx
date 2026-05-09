@@ -1,6 +1,4 @@
-import React from 'react';
-import bgImage from '../assets/bg.jpg';
-import './background.css';
+import bgImage from '@/assets/bg.jpg';
 
 export default function Background() {
   return (

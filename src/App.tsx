@@ -1,35 +1,15 @@
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/router';
 
-import { ThemeProvider, useMediaQuery, useTheme } from '@mui/material';
-
-import { useState } from 'react';
-
-import Hamburger from '@/components/Hamburger/Hamburger';
-import MobileMenu from '@/components/MobileMenu/MobileMenu';
+import { ThemeProvider, useTheme } from '@mui/material';
 
 const App: FunctionComponent = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up(768));
 
-  useEffect(() => {
-    if (isDesktop) {
-      setMenuOpen(false);
-    }
-  }, [isDesktop]);
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Hamburger
-          className="md:hidden flex items-center"
-          icons="black"
-          open={menuOpen}
-          onToggle={() => setMenuOpen((prev) => !prev)}
-        />
-        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
         <Router />
       </ThemeProvider>
     </BrowserRouter>
