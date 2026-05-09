@@ -39,7 +39,7 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
         `}
         >
           {/* Logo/Brand Section - Przywrócone Twoje logo */}
-          <a href="/" className="flex items-center gap-3 group">
+          <a href="#home" className="flex items-center gap-3 group">
             {logo ? (
               <img
                 src={logo}
