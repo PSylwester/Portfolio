@@ -9,6 +9,9 @@
   --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
   --color-muted: #94a3b8;
   --color-accent: #38bdf8;
+  --glass-bg: rgb(15 23 42 / 0.3);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-highlight: rgb(255 255 255 / 0.04);
 }
 
 /* 2.wszystko co globalne w base */
@@ -44,6 +47,20 @@
 }
 
 @layer components {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+      0 8px 32px rgb(0 0 0 / 0.7),
+      inset 0 1px 0 var(--glass-highlight);
+
+    border-radius: 24px;
+  }
+
   .landing_title {
     background: linear-gradient(to bottom, #ffffff 25%, #59c5a1 100%);
     -webkit-background-clip: text;
