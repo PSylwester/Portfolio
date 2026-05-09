@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 interface TimeDisplayProps {
-  timezone?: string; // Możesz dodać swoją strefę, np. "Europe/Warsaw"
+  timezone?: string; // Można dodać swoją strefę, np. "Europe/Warsaw"
 }
 
 export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {

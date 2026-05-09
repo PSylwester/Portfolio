@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
@@ -60,24 +59,13 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {DEFAULT_NAV_ITEMS.map((item, index) => (
-              <NavLink
+              <a
                 key={index}
-                to={item.link_to}
-                className={({ isActive }) => `
-                  relative text-sm font-medium transition-all duration-300
-                  hover:text-blue-400 py-2
-                  ${isActive ? 'text-blue-500' : 'text-gray-300'}
-                `}
+                href={`#${item.label.toLowerCase()}`}
+                className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-all duration-300 cursor-pointer"
               >
-                {({ isActive }) => (
-                  <>
-                    {item.label}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 rounded-full animate-in fade-in zoom-in duration-500" />
-                    )}
-                  </>
-                )}
-              </NavLink>
+                {item.label}
+              </a>
             ))}
           </div>
 
@@ -104,14 +92,13 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           <div className="md:hidden absolute top-full left-4 right-4 mt-2 glass border border-white/10 rounded-2xl p-4 animate-in slide-in-from-top-4 duration-300 overflow-hidden">
             <div className="flex flex-col gap-2">
               {DEFAULT_NAV_ITEMS.map((item, index) => (
-                <NavLink
+                <a
                   key={index}
-                  to={item.link_to}
-                  onClick={() => setMobileMenuOpen(false)}
+                  href={`#${item.label.toLowerCase()}`}
                   className="text-gray-300 hover:text-blue-400 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
                 >
                   {item.label}
-                </NavLink>
+                </a>
               ))}
             </div>
           </div>

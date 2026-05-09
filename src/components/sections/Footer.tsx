@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '../ui/Container';
 import { Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react'; // Ikony dla profesjonalnego sznytu
 
