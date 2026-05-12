@@ -57,7 +57,7 @@ export default function Projects() {
               className="glass group flex flex-col rounded-3xl border border-white/10 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] cursor-pointer"
             >
               {/* Opcjonalnie: Miejsce na obrazek projektu */}
-              <div className="h-48 w-full bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
+              <div className="h-48 w-full bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-[color:var(--color-accent)]/50 to-gray-800/50  relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:scale-110 transition-transform duration-500">
                   <Folder size={80} className="text-white" />
                 </div>
