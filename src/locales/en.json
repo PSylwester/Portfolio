@@ -1,7 +1,95 @@
 {
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language_label": "Language"
+  },
+  "hero": {
+    "badge": "Available for new opportunities",
+    "title": "Building <1>robust</1> web apps with a focus on <3>user experience.</3>",
+    "description": "Hi, I'm <1>Sylwester</1>. I specialize in React, TypeScript, and Tailwind CSS. I turn coffee into high-performance, accessible, and scalable frontend solutions.",
+    "cta_projects": "Explore Projects",
+    "cta_talk": "Let's Talk",
+    "easter_egg": ["\"Pain doesn't go away...\"", "\"Hot diggity dog!\""]
+  },
   "about": {
+    "title": "About <1>Me</1>",
+    "subtitle": "Passionate developer crafting beautiful and functional digital experiences with modern technologies.",
     "who_am_i": "Who I Am",
-    "skills": "Technical Skills",
-    "experience": "Work Experience"
+    "description": "I'm a dedicated software developer with a passion for creating intuitive and visually stunning web applications. I transform complex problems into elegant solutions.",
+    "quote": "\"When I'm not coding, I'm usually exploring new tech or sharing knowledge.\"",
+    "skills_title": "Technical Skills",
+    "experience_title": "Work Experience",
+    "exp": {
+      "tech_solutions": {
+        "role": "Frontend Developer",
+        "description": "Building modern web applications with React and TypeScript. Leading frontend architecture decisions."
+      },
+      "creative_studio": {
+        "role": "Junior Web Developer",
+        "description": "Developed responsive websites and interactive user interfaces using modern web technologies."
+      }
+    }
+  },
+  "projects": {
+    "title": "Selected <1>Projects</1>",
+    "subtitle": "A collection of projects where I've combined design thinking with technical implementation to solve real-world problems.",
+    "view_case": "View Case Study",
+    "items": {
+      "ecommerce": {
+        "title": "E-Commerce Platform",
+        "description": "A modern e-commerce solution featuring a responsive frontend with React and TypeScript. Includes product catalog, shopping cart, user authentication, and seamless checkout experience."
+      },
+      "portfolio": {
+        "title": "Portfolio Website",
+        "description": "A dynamic personal portfolio showcasing projects and professional experience. Built with modern web technologies featuring smooth animations and responsive design."
+      },
+      "task_manager": {
+        "title": "Task Management App",
+        "description": "A productivity-focused web application for managing tasks and projects. Features drag-and-drop functionality, real-time updates, and intuitive user interface."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in <1>Touch</1>",
+    "form": {
+      "label_name": "Your Name",
+      "placeholder_name": "John Doe",
+      "label_email": "E-mail Address",
+      "placeholder_email": "john@example.com",
+      "label_subject": "Subject",
+      "placeholder_subject": "Project Inquiry",
+      "label_message": "Message",
+      "placeholder_message": "Tell me about your idea...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "✅ Message sent successfully!",
+      "error_server": "Server error",
+      "error_connection": "Failed to connect to the server."
+    },
+    "info": {
+      "coffee_title": "Let's Grab a Coffee",
+      "coffee_desc": "I believe your work - and the ideas behind it - matter. Whether you have a big idea or just a quick question, I'm here to listen and collaborate.",
+      "email_me": "Email Me",
+      "socials": "Socials",
+      "footer_note": "\"I usually reply within 24 hours. Coffee's on me! ☕\""
+    }
+  },
+  "footer": {
+    "description": "Crafting digital experiences with precision and passion. Based in Poland, working worldwide.",
+    "nav_title": "Navigation",
+    "connect_title": "Connect",
+    "built_with": "© {{year}} Portfolio. Built with",
+    "status": "All systems operational",
+    "nav": {
+      "home": "Beginning",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact"
+    }
+  },
+  "common": {
+    "local_time": "Local Time (WAW)"
   }
 }

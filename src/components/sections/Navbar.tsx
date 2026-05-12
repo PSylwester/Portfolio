@@ -2,20 +2,21 @@ import { useState, useEffect } from 'react';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import LanguageSelector from '../ui/LanguageSelector';
-import i18n from '@/i18n';
+import { useTranslation } from 'react-i18next';
+
 interface NavbarProps {
   logo?: string;
   logoText?: string;
 }
 
 export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
+  const { t } = useTranslation();
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-
     if (savedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.add('light');
@@ -48,21 +49,11 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? 'py-3' : 'py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'}`}
     >
       <div className="container mx-auto px-4">
         <div
-          className={`
-          relative flex items-center justify-between px-6 py-2
-          transition-all duration-500 rounded-2xl border
-          ${
-            scrolled
-              ? 'glass border-white/10 shadow-2xl shadow-blue-500/10'
-              : 'bg-transparent border-transparent'
-          }
-        `}
+          className={`relative flex items-center justify-between px-6 py-2 transition-all duration-500 rounded-2xl border ${scrolled ? 'glass border-white/10 shadow-2xl shadow-blue-500/10' : 'bg-transparent border-transparent'}`}
         >
           <a href="#home" onClick={closeMobileMenu} className="flex items-center gap-3 group">
             {logo ? (
@@ -88,7 +79,7 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
                 href={`#${item.label.toLowerCase()}`}
                 className="text-sm font-medium text-text-muted hover:text-blue-500 transition-all duration-300 cursor-pointer"
               >
-                {item.label}
+                {t(`nav.${item.label.toLowerCase()}`)}
               </a>
             ))}
           </div>
@@ -117,7 +108,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-4 right-4 mt-2 glass border border-white/10 rounded-2xl p-4 animate-in slide-in-from-top-4 duration-300 overflow-hidden shadow-2xl">
             <div className="flex flex-col gap-2">
-              {/* Linki Nawigacyjne */}
               {DEFAULT_NAV_ITEMS.map((item, index) => (
                 <a
                   key={index}
@@ -125,21 +115,16 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
                   onClick={closeMobileMenu}
                   className="text-[color:var(--color-text-muted)] hover:text-blue-500 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
                 >
-                  {/* Tu używamy t() jeśli klucze w DEFAULT_NAV_ITEMS odpowiadają tym w JSON */}
-                  {item.label}
+                  {t(`nav.${item.label.toLowerCase()}`)}
                 </a>
               ))}
 
-              {/* Linia oddzielająca (Separator) */}
               <div className="h-px bg-white/10 my-2 mx-2" />
 
-              {/* Sekcja zmiany języka */}
               <div className="flex items-center justify-between px-4 py-2">
                 <span className="text-sm font-medium text-[color:var(--color-text-muted)]">
-                  {i18n.language === 'pl' ? 'Język' : 'Language'}
+                  {t('nav.language_label')}
                 </span>
-
-                {/* Twój komponent */}
                 <LanguageSelector />
               </div>
             </div>

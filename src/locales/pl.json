@@ -1,7 +1,96 @@
 {
+  "nav": {
+    "about": "O mnie",
+    "projects": "Projekty",
+    "contact": "Kontakt",
+    "language_label": "Język"
+  },
+  "hero": {
+    "badge": "Dostępny do nowych projektów",
+    "title": "Tworzę <1>solidne</1> aplikacje webowe, stawiając na <3>doświadczenie użytkownika.</3>",
+    "description": "Cześć, jestem <1>Sylwester</1>. Specjalizuję się w React, TypeScript i Tailwind CSS. Zmieniam kawę w wydajne, dostępne i skalowalne rozwiązania frontendowe.",
+    "cta_projects": "Zobacz Projekty",
+    "cta_talk": "Porozmawiajmy",
+    "easter_egg": ["\"Ból nie przemija...\"", "\"Ale urwał!\""]
+  },
+
   "about": {
+    "title": "O <1>Mnie</1>",
+    "subtitle": "Pasjonat programowania tworzący piękne i funkcjonalne cyfrowe doświadczenia przy użyciu nowoczesnych technologii.",
     "who_am_i": "Kim jestem",
-    "skills": "Umiejętności techniczne",
-    "experience": "Doświadczenie zawodowe"
+    "description": "Jestem oddanym programistą z pasją do tworzenia intuicyjnych i wizualnie oszałamiających aplikacji internetowych. Przekształcam złożone problemy w eleganckie rozwiązania.",
+    "quote": "\"Kiedy nie koduję, zazwyczaj odkrywam nowe technologie lub dzielę się wiedzą.\"",
+    "skills_title": "Umiejętności techniczne",
+    "experience_title": "Doświadczenie zawodowe",
+    "exp": {
+      "tech_solutions": {
+        "role": "Frontend Developer",
+        "description": "Tworzenie nowoczesnych aplikacji webowych z użyciem React i TypeScript. Podejmowanie kluczowych decyzji dotyczących architektury frontendowej."
+      },
+      "creative_studio": {
+        "role": "Junior Web Developer",
+        "description": "Rozwijanie responsywnych stron internetowych i interaktywnych interfejsów użytkownika przy użyciu nowoczesnych technologii webowych."
+      }
+    }
+  },
+  "projects": {
+    "title": "Wybrane <1>Realizacje</1>",
+    "subtitle": "Kolekcja projektów, w których połączyłem myślenie projektowe z techniczną implementacją, aby rozwiązywać realne problemy.",
+    "view_case": "Zobacz stronę",
+    "items": {
+      "ecommerce": {
+        "title": "Platforma E-Commerce",
+        "description": "Nowoczesne rozwiązanie e-commerce z responsywnym frontendem w React i TypeScript. Zawiera katalog produktów, koszyk, autoryzację użytkowników i płynny proces zakupowy."
+      },
+      "portfolio": {
+        "title": "Strona Portfolio",
+        "description": "Dynamiczne portfolio osobiste prezentujące projekty i doświadczenie zawodowe. Zbudowane z użyciem nowoczesnych technologii, charakteryzuje się płynnymi animacjami i responsywnym designem."
+      },
+      "task_manager": {
+        "title": "Aplikacja do zadań",
+        "description": "Skoncentrowana na produktywności aplikacja do zarządzania zadaniami i projektami. Posiada funkcjonalność drag-and-drop, aktualizacje w czasie rzeczywistym i intuicyjny interfejs."
+      }
+    }
+  },
+  "contact": {
+    "title": "<1>Skontaktuj się</1> ze mną",
+    "form": {
+      "label_name": "Twoje Imię",
+      "placeholder_name": "Jan Kowalski",
+      "label_email": "Adres E-mail",
+      "placeholder_email": "jan@przyklad.pl",
+      "label_subject": "Temat",
+      "placeholder_subject": "Zapytanie o projekt",
+      "label_message": "Wiadomość",
+      "placeholder_message": "Opowiedz mi o swoim pomyśle...",
+      "submit": "Wyślij Wiadomość",
+      "sending": "Wysyłanie...",
+      "success": "✅ Wiadomość wysłana pomyślnie!",
+      "error_server": "Błąd serwera",
+      "error_connection": "Nie udało się nawiązać połączenia z serwerem."
+    },
+    "info": {
+      "coffee_title": "Wpadnij na kawę",
+      "coffee_desc": "Wierzę, że Twoja praca - i pomysły, które za nią stoją - mają znaczenie. Niezależnie od tego, czy masz wielki projekt, czy tylko krótkie pytanie, jestem tutaj, aby słuchać i współpracować.",
+      "email_me": "Napisz do mnie",
+      "socials": "Media Społeczościowe",
+      "footer_note": "\"Zazwyczaj odpowiadam w ciągu 24 godzin. Kawa na mój koszt! ☕\""
+    }
+  },
+  "footer": {
+    "description": "Tworzenie cyfrowych doświadczeń z precyzją i pasją. Stacjonuję w Polsce, pracuję dla klientów z całego świata.",
+    "nav_title": "Nawigacja",
+    "connect_title": "Media Społeczościowe",
+    "built_with": "© {{year}} Portfolio. Zbudowano przy użyciu",
+    "status": "Wszystkie systemy sprawne",
+    "nav": {
+      "home": "Start",
+      "about": "O mnie",
+      "projects": "Projekty",
+      "contact": "Kontakt"
+    }
+  },
+  "common": {
+    "local_time": "Czas lokalny (WAW)"
   }
 }

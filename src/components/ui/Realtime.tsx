@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface TimeDisplayProps {
-  timezone?: string; //"Europe/Warsaw"
+  timezone?: string; // "Europe/Warsaw"
 }
 
 export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
+  const { t, i18n } = useTranslation();
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -13,11 +15,14 @@ export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
   }, []);
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('pl-PL', {
+    // Sprawdzamy czy aktualny język to angielski
+    const isEnglish = i18n.language.startsWith('en');
+
+    return date.toLocaleTimeString(i18n.language, {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      hour12: false,
+      hour12: isEnglish,
       timeZone: timezone,
     });
   };
@@ -31,9 +36,9 @@ export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
 
       <div className="flex flex-col">
         <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-text-muted)] font-bold leading-none mb-1">
-          Local Time (WAW)
+          {t('common.local_time')}
         </span>
-        <span className="text-sm font-mono font-medium text-[color:var(--color-foreground)] tabular-nums tracking-wider">
+        <span className="text-sm font-mono font-medium text-[color:var(--color-foreground)] tabular-nums tracking-wider uppercase">
           {formatTime(currentTime)}
         </span>
       </div>
