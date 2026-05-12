@@ -1,15 +1,42 @@
 import { useTranslation } from 'react-i18next';
 import { Container } from '../ui/Container';
-import { Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
+import { Mail, Github, Instagram, MessageCircle, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
+  // Zaktualizowana lista sociali, pasująca do sekcji Contact
   const socialLinks = [
-    { platform: 'GitHub', url: '#', icon: <Github size={18} /> },
-    { platform: 'LinkedIn', url: '#', icon: <Linkedin size={18} /> },
-    { platform: 'Twitter', url: '#', icon: <Twitter size={18} /> },
+    {
+      platform: 'Email',
+      url: 'mailto:p.sylwek18@wp.pl',
+      name: 'p.sylwek18@wp.pl',
+      icon: <Mail size={18} />,
+      hoverClass: 'group-hover:bg-[color:var(--color-accent)] group-hover:text-white',
+    },
+    {
+      platform: 'GitHub',
+      url: 'https://github.com/PSylwester',
+      name: 'PSylwester',
+      icon: <Github size={18} />,
+      hoverClass: 'group-hover:bg-white group-hover:text-black',
+    },
+    {
+      platform: 'Instagram',
+      url: 'https://instagram.com/sylwek_here',
+      name: 'sylwek_here',
+      icon: <Instagram size={18} />,
+      hoverClass:
+        'group-hover:bg-gradient-to-tr group-hover:from-[#f9ce34] group-hover:via-[#ee2a7b] group-hover:to-[#6228d7] group-hover:text-white',
+    },
+    {
+      platform: 'Discord',
+      url: 'https://discord.com/users/.luckymax',
+      name: '.luckymax',
+      icon: <MessageCircle size={18} />,
+      hoverClass: 'group-hover:bg-[#5865F2] group-hover:text-white',
+    },
   ];
 
   const navItems = [
@@ -34,6 +61,7 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* Nawigacja */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
               {t('footer.nav_title')}
@@ -56,6 +84,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Social Media - Zaktualizowane sekcja */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
               {t('footer.connect_title')}
@@ -69,16 +98,19 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-500/20 group-hover:text-[color:var(--color-accent)] transition-all">
+                  <span
+                    className={`p-2 bg-white/5 rounded-lg transition-all duration-300 ${link.hoverClass}`}
+                  >
                     {link.icon}
                   </span>
-                  <span className="text-sm font-medium">{link.platform}</span>
+                  <span className="text-sm font-medium">{link.name}</span>
                 </a>
               ))}
             </div>
           </div>
         </div>
 
+        {/* Dolna belka */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-[color:var(--color-text-muted)] font-medium">
             {t('footer.built_with', { year: currentYear })}{' '}
