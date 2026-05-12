@@ -12,13 +12,45 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // 1. Inicjalizacja motywu (Default Dark)
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+
+    // Jeśli użytkownik wcześniej wybrał light, ustawiamy light.
+    // W przeciwnym razie (lub przy pierwszej wizycie) wymuszamy dark.
+    if (savedTheme === 'light') {
+      setIsDark(false);
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    } else {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    }
+
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => setIsDark(!isDark);
+  // 2. Funkcja przełączania motywu
+  const toggleTheme = () => {
+    if (isDark) {
+      // Przełączamy na Light
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      // Przełączamy na Dark
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    setIsDark(!isDark);
+  };
+
+  // Funkcja pomocnicza do zamykania menu mobilnego
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
     <nav
@@ -38,8 +70,8 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           }
         `}
         >
-          {/* Logo/Brand Section - Przywrócone Twoje logo */}
-          <a href="#home" className="flex items-center gap-3 group">
+          {/* Logo/Brand Section - teraz zamyka menu i przewija do góry */}
+          <a href="#home" onClick={closeMobileMenu} className="flex items-center gap-3 group">
             {logo ? (
               <img
                 src={logo}
@@ -51,7 +83,7 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
                 <span className="font-bold text-white text-lg">{logoText.charAt(0)}</span>
               </div>
             )}
-            <span className="font-bold text-xl tracking-tighter text-white group-hover:text-blue-400 transition-colors">
+            <span className="font-bold text-xl tracking-tighter text-foreground group-hover:text-blue-500 transition-colors">
               {logoText}
             </span>
           </a>
@@ -62,7 +94,7 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
               <a
                 key={index}
                 href={`#${item.label.toLowerCase()}`}
-                className="text-sm font-medium text-gray-300 hover:text-blue-400 transition-all duration-300 cursor-pointer"
+                className="text-sm font-medium text-text-muted hover:text-blue-500 transition-all duration-300 cursor-pointer"
               >
                 {item.label}
               </a>
@@ -73,13 +105,14 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+              className="p-2 rounded-xl dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 text-text-muted hover:text-[var(--color-foreground)] dark:hover:bg-white/10 hover:bg-black/10 transition-all cursor-pointer"
+              aria-label="Toggle Theme"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
             <button
-              className="md:hidden text-white cursor-pointer"
+              className="md:hidden text-foreground cursor-pointer"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,7 +128,8 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
                 <a
                   key={index}
                   href={`#${item.label.toLowerCase()}`}
-                  className="text-gray-300 hover:text-blue-400 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
+                  onClick={closeMobileMenu}
+                  className="text-text-muted hover:text-blue-500 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
                 >
                   {item.label}
                 </a>

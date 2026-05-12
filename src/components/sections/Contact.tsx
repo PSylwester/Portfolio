@@ -49,8 +49,8 @@ export default function ContactForm() {
       <Container className="relative py-24 min-h-screen flex flex-col justify-center">
         {/* Nagłówek sekcji */}
         <header className="mb-16 text-left">
-          <h2 className="landing_title text-4xl md:text-6xl font-bold mb-6">
-            Get in <span className="text-blue-500">Touch</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Get in <span className="text-[color:var(--color-accent)]">Touch</span>
           </h2>
         </header>
 
@@ -59,11 +59,13 @@ export default function ContactForm() {
           <div className="lg:col-span-7 order-2 lg:order-1">
             <form
               onSubmit={handleSubmit}
-              className="glass p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl"
+              className="glass p-8 md:p-10 rounded-3xl border dark:border-white/10 border-black/10 shadow-2xl"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-400 ml-1">Your Name</label>
+                  <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -72,11 +74,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     disabled={loading}
                     placeholder="John Doe"
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-gray-400 ml-1">E-mail Address</label>
+                  <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
+                    E-mail Address
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -85,13 +89,15 @@ export default function ContactForm() {
                     onChange={handleChange}
                     disabled={loading}
                     placeholder="john@example.com"
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
-                <label className="text-sm font-medium text-gray-400 ml-1">Subject</label>
+                <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
+                  Subject
+                </label>
                 <input
                   type="text"
                   name="topic"
@@ -100,12 +106,14 @@ export default function ContactForm() {
                   onChange={handleChange}
                   disabled={loading}
                   placeholder="Project Inquiry"
-                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2 mb-8">
-                <label className="text-sm font-medium text-gray-400 ml-1">Message</label>
+                <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
+                  Message
+                </label>
                 <textarea
                   name="message"
                   required
@@ -114,14 +122,14 @@ export default function ContactForm() {
                   onChange={handleChange}
                   disabled={loading}
                   placeholder="Tell me about your idea..."
-                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full md:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group disabled:opacity-50"
+                className="w-full md:w-auto px-10 py-4 bg-[color:var(--color-accent)] text-[#f8fafc] dark:text-[#0f172a] hover:shadow-lg hover:shadow-[color:var(--color-accent)]/50 font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group disabled:opacity-50"
               >
                 {loading ? 'Sending...' : 'Send Message'}
                 <Send
@@ -140,10 +148,10 @@ export default function ContactForm() {
               <Realtime />
             </div>
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-white flex items-center gap-3">
-                Let's Grab a Coffee <Coffee className="text-blue-500" />
+              <h3 className="text-3xl font-bold text-[color:var(--color-foreground)] flex items-center gap-3">
+                Let's Grab a Coffee <Coffee className="text-[color:var(--color-accent)]" />
               </h3>
-              <p className="text-gray-400 text-lg leading-relaxed text-balance">
+              <p className="text-[color:var(--color-text-muted)] text-lg leading-relaxed text-balance">
                 I believe your work—and the ideas behind it—matter. Whether you have a big idea or
                 just a quick question, I'm here to listen and collaborate.
               </p>
@@ -151,14 +159,16 @@ export default function ContactForm() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                <div className="p-3 rounded-xl bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)] group-hover:bg-[color:var(--color-accent)] group-hover:text-white transition-all">
                   <Mail size={24} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">
+                  <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
                     Email Me
                   </p>
-                  <p className="text-white font-medium">hello@yourportfolio.com</p>
+                  <p className="text-[color:var(--color-foreground)] font-medium">
+                    hello@yourportfolio.com
+                  </p>
                 </div>
               </div>
 
@@ -167,17 +177,19 @@ export default function ContactForm() {
                   <MessageSquare size={24} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">
+                  <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
                     Socials
                   </p>
-                  <p className="text-white font-medium">LinkedIn / GitHub / Twitter</p>
+                  <p className="text-[color:var(--color-foreground)] font-medium">
+                    LinkedIn / GitHub / Twitter
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Mały "easter egg" - status */}
             <div className="glass p-6 rounded-2xl border border-white/5 inline-block">
-              <p className="text-sm text-gray-400 italic">
+              <p className="text-sm text-[color:var(--color-text-muted)] italic">
                 "I usually reply within 24 hours. Coffee's on me! ☕"
               </p>
             </div>

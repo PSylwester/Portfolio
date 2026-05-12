@@ -42,10 +42,10 @@ export default function Projects() {
       <Container className="relative py-24 min-h-screen">
         {/* Nagłówek spójny z resztą strony */}
         <header className="mb-16 text-left">
-          <h2 className="landing_title text-4xl md:text-6xl font-bold mb-6">
-            Selected <span className="text-blue-500">Works</span>
+          <h2 className=" text-4xl md:text-6xl font-bold mb-6">
+            Selected <span className="text-[color:var(--color-accent)]">Works</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-xl text-[color:var(--color-text-muted)] max-w-2xl leading-relaxed">
             A collection of projects where I've combined design thinking with technical
             implementation to solve real-world problems.
           </p>
@@ -58,9 +58,8 @@ export default function Projects() {
               key={project.id}
               className="glass group flex flex-col rounded-3xl border border-white/10 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] cursor-pointer"
             >
-              {/* Opcjonalnie: Miejsce na obrazek projektu (jeśli masz w danych) */}
+              {/* Opcjonalnie: Miejsce na obrazek projektu */}
               <div className="h-48 w-full bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
-                {/* Jeśli nie masz zdjęć, ten dekoracyjny folder wygląda pro */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:scale-110 transition-transform duration-500">
                   <Folder size={80} className="text-white" />
                 </div>
@@ -79,12 +78,12 @@ export default function Projects() {
 
               <div className="p-8 flex flex-col flex-grow">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl font-bold text-[color:var(--color-foreground)] group-hover:text-[color:var(--color-accent)] transition-colors">
                     {project.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-[color:var(--color-text-muted)] text-sm leading-relaxed mb-6 flex-grow">
                   {project.description}
                 </p>
 
@@ -93,7 +92,7 @@ export default function Projects() {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded bg-white/5 text-gray-400 border border-white/10 group-hover:border-blue-500/30 transition-colors"
+                      className="text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded bg-[color:var(--glass-bg)] text-[color:var(--color-text-muted)] border dark:border-white/10 border-black/20 group-hover:border-[color:var(--color-accent)] transition-colors"
                     >
                       {tech}
                     </span>
@@ -104,7 +103,7 @@ export default function Projects() {
                 {project.link && (
                   <Link
                     to={project.link}
-                    className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-white/5 hover:bg-white text-white hover:text-black rounded-xl font-bold transition-all duration-300"
+                    className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-[color:var(--color-accent)] text-[#f8fafc] dark:text-[#0f172a] hover:shadow-lg hover:shadow-[color:var(--color-accent)]/50 rounded-xl font-bold transition-all duration-300"
                   >
                     View Case Study
                     <ExternalLink size={16} />
