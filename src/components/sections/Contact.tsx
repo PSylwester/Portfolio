@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container } from '../ui/Container';
 import { Realtime } from '../ui/Realtime';
-import { Send, Coffee, Mail, MessageSquare } from 'lucide-react'; // Ikony dla lepszego UX
+import { Send, Coffee, Mail, MessageSquare, Github, Instagram, MessageCircle } from 'lucide-react'; // Ikony dla lepszego UX
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -54,7 +55,7 @@ export default function ContactForm() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-7 order-2 lg:order-1">
+          <div className="lg:col-span-7 order-1 lg:order-1">
             <form
               onSubmit={handleSubmit}
               className="glass p-8 md:p-10 rounded-3xl border dark:border-white/10 border-black/10 shadow-2xl"
@@ -140,7 +141,7 @@ export default function ContactForm() {
             </form>
           </div>
 
-          <div className="lg:col-span-5 order-1 lg:order-2 space-y-10">
+          <div className="lg:col-span-5 order-2 lg:order-2 space-y-10">
             <div className="flex justify-start">
               <Realtime />
             </div>
@@ -154,34 +155,84 @@ export default function ContactForm() {
               </p>
             </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)] group-hover:bg-[color:var(--color-accent)] group-hover:text-white transition-all">
+            <div className="space-y-6">
+              {/* Email */}
+              <a
+                href="mailto:p.sylwek18@wp.pl"
+                className="flex items-center gap-4 group transition-all"
+              >
+                <div className="p-3 rounded-xl bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)] group-hover:bg-[color:var(--color-accent)] group-hover:text-white transition-all shadow-sm">
                   <Mail size={24} />
                 </div>
                 <div>
                   <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
-                    Email Me
+                    email me
                   </p>
-                  <p className="text-[color:var(--color-foreground)] font-medium">
-                    hello@yourportfolio.com
+                  <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-[color:var(--color-accent)] transition-colors">
+                    p.sylwek18@wp.pl
                   </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all">
-                  <MessageSquare size={24} />
+              {/* GitHub */}
+              <a
+                href="https://github.com/PSylwester"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group transition-all"
+              >
+                <div className="p-3 rounded-xl bg-gray-500/10 text-gray-400 group-hover:bg-white group-hover:text-black transition-all shadow-sm">
+                  <Github size={24} />
                 </div>
                 <div>
                   <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
-                    Socials
+                    GitHub
                   </p>
-                  <p className="text-[color:var(--color-foreground)] font-medium">
-                    LinkedIn / GitHub / Twitter
+                  <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-white transition-colors">
+                    PSylwester
                   </p>
                 </div>
-              </div>
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/sylwek_here"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group transition-all"
+              >
+                <div className="p-3 rounded-xl bg-pink-500/10 text-pink-500 group-hover:bg-gradient-to-tr group-hover:from-[#f9ce34] group-hover:via-[#ee2a7b] group-hover:to-[#6228d7] group-hover:text-white transition-all shadow-sm">
+                  <Instagram size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
+                    Instagram
+                  </p>
+                  <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-pink-500 transition-colors">
+                    @sylwek_here
+                  </p>
+                </div>
+              </a>
+
+              {/* Discord */}
+              <a
+                href="https://discord.com/users/.luckymax" // lub link do serwera
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group transition-all"
+              >
+                <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-[#5865F2] group-hover:text-white transition-all shadow-sm">
+                  <MessageCircle size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
+                    Discord
+                  </p>
+                  <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-indigo-400 transition-colors">
+                    .luckymax
+                  </p>
+                </div>
+              </a>
             </div>
 
             <div className="glass p-6 rounded-2xl border border-white/5 inline-block">
