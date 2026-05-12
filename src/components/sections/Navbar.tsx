@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import { Moon, Sun, Menu, X } from 'lucide-react';
+import LanguageSelector from '../ui/LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 interface NavbarProps {
   logo?: string;
@@ -8,13 +10,13 @@ interface NavbarProps {
 }
 
 export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
+  const { t } = useTranslation();
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-
     if (savedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.add('light');
@@ -47,21 +49,11 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? 'py-3' : 'py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'}`}
     >
       <div className="container mx-auto px-4">
         <div
-          className={`
-          relative flex items-center justify-between px-6 py-2
-          transition-all duration-500 rounded-2xl border
-          ${
-            scrolled
-              ? 'glass border-white/10 shadow-2xl shadow-blue-500/10'
-              : 'bg-transparent border-transparent'
-          }
-        `}
+          className={`relative flex items-center justify-between px-6 py-2 transition-all duration-500 rounded-2xl border ${scrolled ? 'glass border-white/10 shadow-2xl shadow-blue-500/10' : 'bg-transparent border-transparent'}`}
         >
           <a href="#home" onClick={closeMobileMenu} className="flex items-center gap-3 group">
             {logo ? (
@@ -87,12 +79,15 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
                 href={`#${item.label.toLowerCase()}`}
                 className="text-sm font-medium text-text-muted hover:text-blue-500 transition-all duration-300 cursor-pointer"
               >
-                {item.label}
+                {t(`nav.${item.label.toLowerCase()}`)}
               </a>
             ))}
           </div>
 
           <div className="flex items-center gap-4">
+            <div className="hidden md:block">
+              <LanguageSelector />
+            </div>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-xl dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 text-text-muted hover:text-[var(--color-foreground)] dark:hover:bg-white/10 hover:bg-black/10 transition-all cursor-pointer"
@@ -111,18 +106,27 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-4 right-4 mt-2 glass border border-white/10 rounded-2xl p-4 animate-in slide-in-from-top-4 duration-300 overflow-hidden">
+          <div className="md:hidden absolute top-full left-4 right-4 mt-2 glass border border-white/10 rounded-2xl p-4 animate-in slide-in-from-top-4 duration-300 overflow-hidden shadow-2xl">
             <div className="flex flex-col gap-2">
               {DEFAULT_NAV_ITEMS.map((item, index) => (
                 <a
                   key={index}
                   href={`#${item.label.toLowerCase()}`}
                   onClick={closeMobileMenu}
-                  className="text-text-muted hover:text-blue-500 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
+                  className="text-[color:var(--color-text-muted)] hover:text-blue-500 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
                 >
-                  {item.label}
+                  {t(`nav.${item.label.toLowerCase()}`)}
                 </a>
               ))}
+
+              <div className="h-px bg-white/10 my-2 mx-2" />
+
+              <div className="flex items-center justify-between px-4 py-2">
+                <span className="text-sm font-medium text-[color:var(--color-text-muted)]">
+                  {t('nav.language_label')}
+                </span>
+                <LanguageSelector />
+              </div>
             </div>
           </div>
         )}
