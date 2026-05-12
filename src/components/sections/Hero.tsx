@@ -36,7 +36,6 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-wrap gap-4 mt-12">
-          {/* Przycisk do sekcji Projects */}
           <a
             href="#projects"
             className="px-8 py-4 bg-[color:var(--color-accent)] text-[#f8fafc] dark:text-[#0f172a] hover:shadow-lg hover:shadow-[color:var(--color-accent)]/50 rounded-2xl font-bold transition-all cursor-pointer inline-block text-center"
@@ -44,7 +43,6 @@ export default function Hero() {
             Explore Projects
           </a>
 
-          {/* Przycisk do sekcji About (Let's Talk) */}
           <a
             href="#contact"
             className="px-8 py-4 border-2 border-gray-600 dark:border-gray-800 text-foreground rounded-2xl font-bold hover:border-[color:var(--color-accent)]  transition-all cursor-pointer inline-block text-center"

@@ -12,12 +12,9 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // 1. Inicjalizacja motywu (Default Dark)
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
 
-    // Jeśli użytkownik wcześniej wybrał light, ustawiamy light.
-    // W przeciwnym razie (lub przy pierwszej wizycie) wymuszamy dark.
     if (savedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.add('light');
@@ -33,15 +30,12 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 2. Funkcja przełączania motywu
   const toggleTheme = () => {
     if (isDark) {
-      // Przełączamy na Light
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
       localStorage.setItem('theme', 'light');
     } else {
-      // Przełączamy na Dark
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -49,7 +43,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
     setIsDark(!isDark);
   };
 
-  // Funkcja pomocnicza do zamykania menu mobilnego
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
@@ -70,7 +63,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           }
         `}
         >
-          {/* Logo/Brand Section - teraz zamyka menu i przewija do góry */}
           <a href="#home" onClick={closeMobileMenu} className="flex items-center gap-3 group">
             {logo ? (
               <img
@@ -88,7 +80,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {DEFAULT_NAV_ITEMS.map((item, index) => (
               <a
@@ -101,7 +92,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
             ))}
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
@@ -120,7 +110,6 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-4 right-4 mt-2 glass border border-white/10 rounded-2xl p-4 animate-in slide-in-from-top-4 duration-300 overflow-hidden">
             <div className="flex flex-col gap-2">

@@ -12,12 +12,10 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-24">
-      {/* Subtelna linia z gradientem zamiast zwykłego border-t */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
       <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          {/* Logo / Brand Section */}
           <div className="md:col-span-2 space-y-6">
             <div className="text-2xl font-bold tracking-tighter text-[color:var(--color-foreground)]">
               Port<span className="text-[color:var(--color-accent)]">folio</span>
@@ -28,7 +26,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links - z efektem hover */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
               Navigation
@@ -51,7 +48,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social Links - Ikony + Text */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
               Connect
@@ -75,7 +71,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Status */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-[color:var(--color-text-muted)] font-medium">
             © {currentYear} Portfolio. Built with{' '}
@@ -95,7 +90,6 @@ export default function Footer() {
         </div>
       </Container>
 
-      {/* Dekoracyjne światło w tle stopy */}
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-600/5 blur-[100px] -z-10 rounded-full" />
     </footer>
   );
