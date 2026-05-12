@@ -26,15 +26,15 @@ export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
     <div className="flex items-center gap-3 px-4 py-2 glass rounded-xl border border-white/10 shadow-sm">
       {/* Mała pulsująca kropka sekundy */}
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent)] opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-accent)]"></span>
       </span>
 
       <div className="flex flex-col">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold leading-none mb-1">
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-text-muted)] font-bold leading-none mb-1">
           Local Time (WAW)
         </span>
-        <span className="text-sm font-mono font-medium text-white tabular-nums tracking-wider">
+        <span className="text-sm font-mono font-medium text-[color:var(--color-foreground)] tabular-nums tracking-wider">
           {formatTime(currentTime)}
         </span>
       </div>

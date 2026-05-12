@@ -46,10 +46,10 @@ export default function About() {
       <Container className="relative py-24">
         {/* Nagłówek sekcji - wyrównany do lewej dla spójności */}
         <header className="mb-16">
-          <h2 className="landing_title text-4xl md:text-6xl font-bold mb-6">
-            About <span className="text-blue-500">Me</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            About <span className="text-[color:var(--color-accent)]">Me</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-xl text-[color:var(--color-text-muted)] max-w-2xl leading-relaxed">
             Passionate developer crafting beautiful and functional digital experiences with modern
             technologies.
           </p>
@@ -64,14 +64,14 @@ export default function About() {
 
             <div className="flex items-center gap-3 mb-6 text-blue-400">
               <User size={24} />
-              <h3 className="text-2xl font-bold text-white">Who I Am</h3>
+              <h3 className="text-2xl font-bold text-[color:var(--color-foreground)]">Who I Am</h3>
             </div>
 
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="text-[color:var(--color-foreground)] leading-relaxed text-lg">
               I'm a dedicated software developer with a passion for creating intuitive and visually
               stunning web applications. I transform complex problems into elegant solutions.
             </p>
-            <p className="mt-4 text-gray-400 italic">
+            <p className="mt-4 text-[color:var(--color-text-muted)] italic">
               "When I'm not coding, I'm usually exploring new tech or sharing knowledge."
             </p>
           </div>
@@ -80,7 +80,9 @@ export default function About() {
           <div className="lg:col-span-5 glass p-8 rounded-3xl border border-white/10">
             <div className="flex items-center gap-3 mb-8 text-purple-400">
               <Code2 size={24} />
-              <h3 className="text-xl font-bold text-white">Technical Skills</h3>
+              <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
+                Technical Skills
+              </h3>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -90,9 +92,9 @@ export default function About() {
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
                   ${
                     skill.level === 5
-                      ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30'
-                      : 'bg-white/5 text-gray-400 border border-white/10'
-                  } hover:scale-105 hover:bg-white/10`}
+                      ? 'dark:bg-blue-500/10 text-[color:var(--color-accent)] border border-blue-500/80 dark:border-blue-500/30'
+                      : 'bg-white/5 text-gray-400 border dark:border-white/10 border-black/20'
+                  } hover:scale-105 dark:hover:bg-accent/20 hover:bg-accent/20`}
                 >
                   {skill.name}
                 </span>
@@ -104,21 +106,25 @@ export default function About() {
           <div className="lg:col-span-12 glass p-8 md:p-10 rounded-3xl border border-white/10">
             <div className="flex items-center gap-3 mb-8 text-pink-400">
               <Briefcase size={24} />
-              <h3 className="text-xl font-bold text-white">Work Experience</h3>
+              <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
+                Work Experience
+              </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {experiences.map((exp, index) => (
                 <div
                   key={index}
-                  className="group relative pl-6 border-l-2 border-white/10 hover:border-blue-500 transition-colors"
+                  className="group relative pl-6 border-l-2 border-[color:var(--color-text-muted)] hover:border-[color:var(--color-accent)] transition-colors"
                 >
-                  <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-white/20 group-hover:bg-blue-500 transition-colors" />
-                  <h4 className="font-bold text-gray-100">{exp.role}</h4>
-                  <div className="text-sm text-blue-400 mb-2">
+                  <div className="absolute -left-[5px] top-0 h-2 w-2 rounded-full bg-[color:var(--color-text-muted)] group-hover:bg-[color:var(--color-accent)] transition-colors" />
+                  <h4 className="font-bold text-[color:var(--color-foreground)]">{exp.role}</h4>
+                  <div className="text-sm text-blue-500 dark:text-[color:var(--color-accent)] mb-2">
                     {exp.company} • {exp.period}
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">{exp.description}</p>
+                  <p className="text-[color:var(--color-text-muted)]  text-sm leading-relaxed">
+                    {exp.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -126,7 +132,7 @@ export default function About() {
         </div>
 
         {/* Akcent dekoracyjny w tle sekcji */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent dark:via-white/10 via-black/40 to-transparent" />
       </Container>
     </section>
   );

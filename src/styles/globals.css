@@ -1,28 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
-
 @import 'tailwindcss';
-/* 1. DESIGN TOKENS */
+@custom-variant dark (&:where(.dark, .dark *));
+/* 1. DESIGN TOKENS & ADAPTIVE THEME */
 @theme {
-  --color-background: #020617;
-  --color-foreground: #f8fafc;
+  /* Kolory bazowe (Light Mode) */
+  --color-background: #f8fafc;
+  --color-foreground: #0a0a0f;
+  --color-text-muted: #475569;
+
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-highlight: rgba(0, 0, 0, 0.02);
+
   --font-sans: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Code', monospace;
-  --color-muted: #94a3b8;
-  --color-accent: #38bdf8;
-  --glass-bg: rgb(15 23 42 / 0.3);
-  --glass-border: rgb(255 255 255 / 0.08);
-  --glass-highlight: rgb(255 255 255 / 0.04);
+  --color-accent: #0a84ff;
+  --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 
-/* 2.wszystko co globalne w base */
+/* 2. LIGHT MODE OVERRIDES */
 @layer base {
+  html.dark {
+    --color-background: #020617;
+    --color-foreground: #ecebe8;
+    --color-text-muted: #94a3b8;
+
+    --glass-bg: rgb(15 23 42 / 0.3);
+    --glass-border: rgb(255 255 255 / 0.08);
+    --glass-highlight: rgb(255 255 255 / 0.04);
+    --blob-opacity: 0.3;
+    --blob-blend: screen;
+    --blob-gradient-black: #000000;
+    --bg-oppacity: 10%;
+    --color-accent: #38bdf8;
+  }
+
   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    /* Płynne przejście kolorów przy zmianie motywu */
+    transition: var(--transition-theme);
   }
 
   body {
@@ -34,48 +56,62 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: var(--transition-theme);
   }
+
   code,
   pre,
   .mono {
     font-family: var(--font-mono);
   }
+
   ::selection {
-    background: rgb(var(--color-accent) / 0.3);
-    color: var(--color-background);
+    background: color-mix(in srgb, var(--color-accent), transparent 70%);
+    color: var(--color-foreground);
   }
+
   section {
     scroll-margin-top: 80px;
   }
 }
 
+/* 3. COMPONENTS */
 @layer components {
   .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 
+    /* Adaptacyjny cień */
     box-shadow:
-      0 8px 32px rgb(0 0 0 / 0.7),
+      0 8px 32px rgba(0, 0, 0, 0.1),
       inset 0 1px 0 var(--glass-highlight);
 
     border-radius: 24px;
+    transition: var(--transition-theme);
+  }
+
+  /* Specyficzny cień dla trybu ciemnego by zachować głębię */
+  html.dark .glass {
+    box-shadow:
+      0 8px 32px rgb(0 0 0 / 0.7),
+      inset 0 1px 0 var(--glass-highlight);
   }
 
   .landing_title {
-    background: linear-gradient(to bottom, #ffffff 25%, #59c5a1 100%);
+    /* Gradient, który wygląda dobrze na obu trybach */
+    background: linear-gradient(to bottom, var(--color-foreground) 25%, #59c5a1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
 
-/* === Background Component Animations === */
-
+/* === Background Component Animations (Blobs) === */
 @keyframes blob-1 {
-  0% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {
@@ -84,13 +120,11 @@
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
 }
 
 @keyframes blob-2 {
-  0% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {
@@ -99,13 +133,11 @@
   66% {
     transform: translate(20px, -20px) scale(0.8);
   }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
 }
 
 @keyframes blob-3 {
-  0% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {
@@ -114,13 +146,11 @@
   66% {
     transform: translate(-30px, -40px) scale(0.95);
   }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
 }
 
 @keyframes blob-4 {
-  0% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {
@@ -129,23 +159,17 @@
   66% {
     transform: translate(45px, 15px) scale(0.85);
   }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
 }
 
 .animate-blob-1 {
   animation: blob-1 20s infinite;
 }
-
 .animate-blob-2 {
   animation: blob-2 22s infinite;
 }
-
 .animate-blob-3 {
   animation: blob-3 26s infinite;
 }
-
 .animate-blob-4 {
   animation: blob-4 36s infinite;
 }
@@ -153,11 +177,9 @@
 .animation-delay-2000 {
   animation-delay: 2s;
 }
-
 .animation-delay-4000 {
   animation-delay: 4s;
 }
-
 .animation-delay-6000 {
   animation-delay: 6s;
 }

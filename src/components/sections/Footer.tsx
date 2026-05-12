@@ -19,10 +19,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Logo / Brand Section */}
           <div className="md:col-span-2 space-y-6">
-            <div className="text-2xl font-bold tracking-tighter text-white">
-              Port<span className="text-blue-500">folio</span>
+            <div className="text-2xl font-bold tracking-tighter text-[color:var(--color-foreground)]">
+              Port<span className="text-[color:var(--color-accent)]">folio</span>
             </div>
-            <p className="text-gray-400 max-w-sm leading-relaxed">
+            <p className="text-[color:var(--color-text-muted)] max-w-sm leading-relaxed">
               Crafting digital experiences with precision and passion. Based in Poland, working
               worldwide.
             </p>
@@ -30,7 +30,7 @@ export default function Footer() {
 
           {/* Quick Links - z efektem hover */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-6">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
               Navigation
             </h4>
             <ul className="space-y-4">
@@ -38,7 +38,7 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center gap-1 group"
+                    className="text-[color:var(--color-text-muted)] hover:text-[color:var(--color-accent)] transition-colors duration-300 flex items-center gap-1 group"
                   >
                     {item}
                     <ArrowUpRight
@@ -53,17 +53,19 @@ export default function Footer() {
 
           {/* Social Links - Ikony + Text */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Connect</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-[color:var(--color-foreground)] mb-6">
+              Connect
+            </h4>
             <div className="flex flex-col gap-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.platform}
                   href={link.url}
-                  className="flex items-center gap-3 text-gray-400 hover:text-white transition-all duration-300 group"
+                  className="flex items-center gap-3 text-[color:var(--color-text-muted)] hover:text-[color:var(--color-foreground)] transition-all duration-300 group"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-500/20 group-hover:text-blue-400 transition-all">
+                  <span className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-500/20 group-hover:text-[color:var(--color-accent)] transition-all">
                     {link.icon}
                   </span>
                   <span className="text-sm font-medium">{link.platform}</span>
@@ -75,9 +77,10 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Status */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-gray-500 font-medium">
-            © {currentYear} Portfolio. Built with <span className="text-blue-500">React</span> &{' '}
-            <span className="text-blue-400">Tailwind v4</span>.
+          <div className="text-sm text-[color:var(--color-text-muted)] font-medium">
+            © {currentYear} Portfolio. Built with{' '}
+            <span className="text-[color:var(--color-accent)]">React</span> &{' '}
+            <span className="text-[color:var(--color-accent)]">Tailwind v4</span>.
           </div>
 
           <div className="flex items-center gap-2">
@@ -85,7 +88,7 @@ export default function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            <span className="text-xs text-gray-400 uppercase tracking-tighter font-semibold">
+            <span className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-tighter font-semibold">
               All systems operational
             </span>
           </div>

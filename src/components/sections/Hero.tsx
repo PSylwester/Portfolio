@@ -14,18 +14,20 @@ export default function Hero() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance max-w-4xl leading-[1.05]">
-          Building <span className="text-blue-600">robust</span> web apps with a focus on
-          <span className="text-gray-400 dark:text-gray-500"> user experience.</span>
+          Building <span className="text-[color:var(--color-accent)]">robust</span> web apps with a
+          focus on
+          <span className="text-[color:var(--color-text-muted)]"> user experience.</span>
         </h1>
 
-        <p className="mt-8 max-w-2xl text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-          Hi, I'm <strong className="text-gray-900 dark:text-white font-semibold">Sylwester</strong>
-          . I specialize in React, TypeScript, and Tailwind CSS. I turn coffee into
-          high-performance, accessible, and scalable frontend solutions.
+        <p className="mt-8 max-w-2xl text-lg sm:text-xl text-[color:var(--color-text-muted)] leading-relaxed">
+          Hi, I'm{' '}
+          <strong className="text-[color:var(--color-foreground)] font-semibold">Sylwester</strong>.
+          I specialize in React, TypeScript, and Tailwind CSS. I turn coffee into high-performance,
+          accessible, and scalable frontend solutions.
         </p>
 
         {/* 'easter egg' */}
-        <div className="h-8 mt-4 text-sm font-mono text-gray-400 tracking-widest">
+        <div className="h-8 mt-4 text-sm font-mono  tracking-widest">
           <TypeAnimation
             sequence={['"Pain doesn\'t go away..."', 3000, '"Hot diggity dog!"', 3000]}
             repeat={Infinity}
@@ -34,12 +36,21 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-wrap gap-4 mt-12">
-          <button className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 transition-all cursor-pointer">
+          {/* Przycisk do sekcji Projects */}
+          <a
+            href="#projects"
+            className="px-8 py-4 bg-[color:var(--color-accent)] text-[#f8fafc] dark:text-[#0f172a] hover:shadow-lg hover:shadow-[color:var(--color-accent)]/50 rounded-2xl font-bold transition-all cursor-pointer inline-block text-center"
+          >
             Explore Projects
-          </button>
-          <button className="px-8 py-4 border-2 border-gray-200 dark:border-gray-800 rounded-2xl font-bold hover:border-blue-500 transition-all cursor-pointer">
+          </a>
+
+          {/* Przycisk do sekcji About (Let's Talk) */}
+          <a
+            href="#contact"
+            className="px-8 py-4 border-2 border-gray-600 dark:border-gray-800 text-foreground rounded-2xl font-bold hover:border-[color:var(--color-accent)]  transition-all cursor-pointer inline-block text-center"
+          >
             Let's Talk
-          </button>
+          </a>
         </div>
       </Container>
     </section>
