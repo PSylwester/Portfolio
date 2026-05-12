@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Container } from '../ui/Container';
 import { Code2, Briefcase, User } from 'lucide-react';
 interface Skill {
@@ -41,6 +42,7 @@ const experiences: Experience[] = [
 ];
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <section id="about">
       <Container className="relative py-24">
@@ -60,7 +62,9 @@ export default function About() {
 
             <div className="flex items-center gap-3 mb-6 text-blue-400">
               <User size={24} />
-              <h3 className="text-2xl font-bold text-[color:var(--color-foreground)]">Who I Am</h3>
+              <h3 className="text-2xl font-bold text-[color:var(--color-foreground)]">
+                {t('about.who_am_i')}
+              </h3>
             </div>
 
             <p className="text-[color:var(--color-foreground)] leading-relaxed text-lg">
@@ -78,7 +82,7 @@ export default function About() {
             <div className="flex items-center gap-3 mb-8 text-purple-400">
               <Code2 size={24} />
               <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
-                Technical Skills
+                {t('about.skills')}
               </h3>
             </div>
 
@@ -105,7 +109,7 @@ export default function About() {
             <div className="flex items-center gap-3 mb-8 text-pink-400">
               <Briefcase size={24} />
               <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
-                Work Experience
+                {t('about.experience')}
               </h3>
             </div>
 
