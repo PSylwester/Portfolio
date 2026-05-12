@@ -47,7 +47,6 @@ export default function ContactForm() {
   return (
     <section id="contact">
       <Container className="relative py-24 min-h-screen flex flex-col justify-center">
-        {/* Nagłówek sekcji */}
         <header className="mb-16 text-left">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Get in <span className="text-[color:var(--color-accent)]">Touch</span>
@@ -55,7 +54,6 @@ export default function ContactForm() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* Lewa strona - Formularz (Szklany panel) */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             <form
               onSubmit={handleSubmit}
@@ -142,7 +140,6 @@ export default function ContactForm() {
             </form>
           </div>
 
-          {/* Prawa strona - Content & Info */}
           <div className="lg:col-span-5 order-1 lg:order-2 space-y-10">
             <div className="flex justify-start">
               <Realtime />
@@ -187,7 +184,6 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {/* Mały "easter egg" - status */}
             <div className="glass p-6 rounded-2xl border border-white/5 inline-block">
               <p className="text-sm text-[color:var(--color-text-muted)] italic">
                 "I usually reply within 24 hours. Coffee's on me! ☕"

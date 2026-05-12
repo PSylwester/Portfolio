@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 interface TimeDisplayProps {
-  timezone?: string; // Można dodać swoją strefę, np. "Europe/Warsaw"
+  timezone?: string; //"Europe/Warsaw"
 }
 
 export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
@@ -24,7 +24,6 @@ export function Realtime({ timezone = 'Europe/Warsaw' }: TimeDisplayProps) {
 
   return (
     <div className="flex items-center gap-3 px-4 py-2 glass rounded-xl border border-white/10 shadow-sm">
-      {/* Mała pulsująca kropka sekundy */}
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-accent)] opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-accent)]"></span>

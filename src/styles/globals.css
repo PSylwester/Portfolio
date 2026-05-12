@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
-/* 1. DESIGN TOKENS & ADAPTIVE THEME */
+
 @theme {
-  /* Kolory bazowe (Light Mode) */
+  /* (Light Mode) */
   --color-background: #f8fafc;
   --color-foreground: #0a0a0f;
   --color-text-muted: #475569;
@@ -18,23 +18,22 @@
   --transition-theme: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 
-/* 2. LIGHT MODE OVERRIDES */
+.dark {
+  --color-background: #020617;
+  --color-foreground: #ecebe8;
+  --color-text-muted: #94a3b8;
+
+  --glass-bg: rgb(15 23 42 / 0.3);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --glass-highlight: rgb(255 255 255 / 0.04);
+  --blob-opacity: 0.3;
+  --blob-blend: screen;
+  --blob-gradient-black: #000000;
+  --bg-oppacity: 10%;
+  --color-accent: #38bdf8;
+}
+
 @layer base {
-  html.dark {
-    --color-background: #020617;
-    --color-foreground: #ecebe8;
-    --color-text-muted: #94a3b8;
-
-    --glass-bg: rgb(15 23 42 / 0.3);
-    --glass-border: rgb(255 255 255 / 0.08);
-    --glass-highlight: rgb(255 255 255 / 0.04);
-    --blob-opacity: 0.3;
-    --blob-blend: screen;
-    --blob-gradient-black: #000000;
-    --bg-oppacity: 10%;
-    --color-accent: #38bdf8;
-  }
-
   * {
     margin: 0;
     padding: 0;
@@ -43,7 +42,6 @@
 
   html {
     scroll-behavior: smooth;
-    /* Płynne przejście kolorów przy zmianie motywu */
     transition: var(--transition-theme);
   }
 
@@ -75,7 +73,6 @@
   }
 }
 
-/* 3. COMPONENTS */
 @layer components {
   .glass {
     background: var(--glass-bg);
@@ -83,7 +80,6 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 
-    /* Adaptacyjny cień */
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.1),
       inset 0 1px 0 var(--glass-highlight);
@@ -92,23 +88,13 @@
     transition: var(--transition-theme);
   }
 
-  /* Specyficzny cień dla trybu ciemnego by zachować głębię */
   html.dark .glass {
     box-shadow:
       0 8px 32px rgb(0 0 0 / 0.7),
       inset 0 1px 0 var(--glass-highlight);
   }
-
-  .landing_title {
-    /* Gradient, który wygląda dobrze na obu trybach */
-    background: linear-gradient(to bottom, var(--color-foreground) 25%, #59c5a1 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
-/* === Background Component Animations (Blobs) === */
 @keyframes blob-1 {
   0%,
   100% {

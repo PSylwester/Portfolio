@@ -40,7 +40,6 @@ export default function Projects() {
   return (
     <section id="projects">
       <Container className="relative py-24 min-h-screen">
-        {/* Nagłówek spójny z resztą strony */}
         <header className="mb-16 text-left">
           <h2 className=" text-4xl md:text-6xl font-bold mb-6">
             Selected <span className="text-[color:var(--color-accent)]">Works</span>
@@ -51,7 +50,6 @@ export default function Projects() {
           </p>
         </header>
 
-        {/* Grid projektów - zwiększony odstęp gap-10 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10 ">
           {projects.map((project) => (
             <div
@@ -87,7 +85,6 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Technologie jako tagi */}
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.technologies.map((tech, index) => (
                     <span
@@ -99,7 +96,6 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Przycisk akcji - teraz bardziej subtelny i elegancki */}
                 {project.link && (
                   <Link
                     to={project.link}
@@ -114,7 +110,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Tło dekoracyjne */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 blur-[120px] -z-10 rounded-full" />
       </Container>
     </section>

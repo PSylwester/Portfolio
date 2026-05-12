@@ -44,7 +44,6 @@ export default function About() {
   return (
     <section id="about">
       <Container className="relative py-24">
-        {/* Nagłówek sekcji - wyrównany do lewej dla spójności */}
         <header className="mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             About <span className="text-[color:var(--color-accent)]">Me</span>
@@ -55,12 +54,9 @@ export default function About() {
           </p>
         </header>
 
-        {/* Główny Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Lewa kolumna: Who I Am (Szklana karta) */}
           <div className="lg:col-span-7 glass p-8 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden group">
-            {/* Subtelny blask w rogu karty po najechaniu */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 blur-[60px] group-hover:bg-blue-500/20 transition-colors duration-500" />
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 blur-[60px] group-hover:bg-blue-500/20 transition-colors duration-500 pointer-events-none" />
 
             <div className="flex items-center gap-3 mb-6 text-blue-400">
               <User size={24} />
@@ -76,8 +72,9 @@ export default function About() {
             </p>
           </div>
 
-          {/* Prawa kolumna: Skills */}
-          <div className="lg:col-span-5 glass p-8 rounded-3xl border border-white/10">
+          <div className="lg:col-span-5 glass p-8 rounded-3xl border border-white/10 relative overflow-hidden group">
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-purple-500/10 blur-[60px] group-hover:bg-purple-500/20 transition-colors duration-500 pointer-events-none" />
+
             <div className="flex items-center gap-3 mb-8 text-purple-400">
               <Code2 size={24} />
               <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
@@ -90,11 +87,11 @@ export default function About() {
                 <span
                   key={index}
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
-                  ${
-                    skill.level === 5
-                      ? 'dark:bg-blue-500/10 text-[color:var(--color-accent)] border border-blue-500/80 dark:border-blue-500/30'
-                      : 'bg-white/5 text-gray-400 border dark:border-white/10 border-black/20'
-                  } hover:scale-105 dark:hover:bg-accent/20 hover:bg-accent/20`}
+          ${
+            skill.level === 5
+              ? 'dark:bg-blue-500/10 text-[color:var(--color-accent)] border border-blue-500/80 dark:border-blue-500/30'
+              : 'bg-white/5 text-gray-400 border dark:border-white/10 border-black/20'
+          } hover:scale-105 dark:hover:bg-accent/20 hover:bg-accent/20`}
                 >
                   {skill.name}
                 </span>
@@ -102,8 +99,9 @@ export default function About() {
             </div>
           </div>
 
-          {/* Dolny wiersz: Experience (Szeroka szklana karta) */}
-          <div className="lg:col-span-12 glass p-8 md:p-10 rounded-3xl border border-white/10">
+          <div className="lg:col-span-12 glass p-8 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden group">
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-pink-500/10 blur-[80px] group-hover:bg-pink-500/20 transition-colors duration-500 pointer-events-none" />
+
             <div className="flex items-center gap-3 mb-8 text-pink-400">
               <Briefcase size={24} />
               <h3 className="text-xl font-bold text-[color:var(--color-foreground)]">
@@ -122,7 +120,7 @@ export default function About() {
                   <div className="text-sm text-blue-500 dark:text-[color:var(--color-accent)] mb-2">
                     {exp.company} • {exp.period}
                   </div>
-                  <p className="text-[color:var(--color-text-muted)]  text-sm leading-relaxed">
+                  <p className="text-[color:var(--color-text-muted)] text-sm leading-relaxed">
                     {exp.description}
                   </p>
                 </div>
@@ -131,7 +129,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Akcent dekoracyjny w tle sekcji */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent dark:via-white/10 via-black/40 to-transparent" />
       </Container>
     </section>
