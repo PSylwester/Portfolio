@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { Container } from '../ui/Container';
 import { Realtime } from '../ui/Realtime';
 import { Send, Coffee, Mail, MessageSquare, Github, Instagram, MessageCircle } from 'lucide-react'; // Ikony dla lepszego UX
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,14 +34,14 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        alert('✅ Wiadomość wysłana pomyślnie!');
+        alert(t('contact.form.success'));
         setFormData({ name: '', email: '', topic: '', message: '' });
       } else {
         const data = await response.json();
-        setError(data.error || 'Błąd serwera');
+        setError(data.error || t('contact.form.error_server'));
       }
     } catch (err) {
-      setError('Nie udało się nawiązać połączenia z serwerem.');
+      setError(t('contact.form.error_connection'));
     } finally {
       setLoading(false);
     }
@@ -50,7 +52,13 @@ export default function ContactForm() {
       <Container className="relative py-24 min-h-screen flex flex-col justify-center">
         <header className="mb-16 text-left">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Get in <span className="text-[color:var(--color-accent)]">Touch</span>
+            <Trans
+              i18nKey="contact.title"
+              components={[
+                <span key="0" />,
+                <span key="1" className="text-[color:var(--color-accent)]" />,
+              ]}
+            />
           </h2>
         </header>
 
@@ -63,7 +71,7 @@ export default function ContactForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
-                    Your Name
+                    {t('contact.form.label_name')}
                   </label>
                   <input
                     type="text"
@@ -72,13 +80,13 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     disabled={loading}
-                    placeholder="John Doe"
+                    placeholder={t('contact.form.placeholder_name')}
                     className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
-                    E-mail Address
+                    {t('contact.form.label_email')}
                   </label>
                   <input
                     type="email"
@@ -87,7 +95,7 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     disabled={loading}
-                    placeholder="john@example.com"
+                    placeholder={t('contact.form.placeholder_email')}
                     className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                   />
                 </div>
@@ -95,7 +103,7 @@ export default function ContactForm() {
 
               <div className="flex flex-col gap-2 mb-6">
                 <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
-                  Subject
+                  {t('contact.form.label_subject')}
                 </label>
                 <input
                   type="text"
@@ -104,14 +112,14 @@ export default function ContactForm() {
                   value={formData.topic}
                   onChange={handleChange}
                   disabled={loading}
-                  placeholder="Project Inquiry"
+                  placeholder={t('contact.form.placeholder_subject')}
                   className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2 mb-8">
                 <label className="text-sm font-medium text-[color:var(--color-text-muted)] ml-1">
-                  Message
+                  {t('contact.form.label_message')}
                 </label>
                 <textarea
                   name="message"
@@ -120,7 +128,7 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   disabled={loading}
-                  placeholder="Tell me about your idea..."
+                  placeholder={t('contact.form.placeholder_message')}
                   className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors resize-none"
                 />
               </div>
@@ -130,7 +138,7 @@ export default function ContactForm() {
                 disabled={loading}
                 className="w-full md:w-auto px-10 py-4 bg-[color:var(--color-accent)] text-[#f8fafc] dark:text-[#0f172a] hover:shadow-lg hover:shadow-[color:var(--color-accent)]/50 font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group disabled:opacity-50"
               >
-                {loading ? 'Sending...' : 'Send Message'}
+                {loading ? t('contact.form.sending') : t('contact.form.submit')}
                 <Send
                   size={18}
                   className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
@@ -147,11 +155,11 @@ export default function ContactForm() {
             </div>
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-[color:var(--color-foreground)] flex items-center gap-3">
-                Let's Grab a Coffee <Coffee className="text-[color:var(--color-accent)]" />
+                {t('contact.info.coffee_title')}{' '}
+                <Coffee className="text-[color:var(--color-accent)]" />
               </h3>
               <p className="text-[color:var(--color-text-muted)] text-lg leading-relaxed text-balance">
-                I believe your work—and the ideas behind it—matter. Whether you have a big idea or
-                just a quick question, I'm here to listen and collaborate.
+                {t('contact.info.coffee_desc')}
               </p>
             </div>
 
@@ -166,7 +174,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
-                    email me
+                    {t('contact.info.email_me')}
                   </p>
                   <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-[color:var(--color-accent)] transition-colors">
                     p.sylwek18@wp.pl
@@ -187,6 +195,7 @@ export default function ContactForm() {
                 <div>
                   <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
                     GitHub
+                    {t('contact.info.socials')}
                   </p>
                   <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-white transition-colors">
                     PSylwester
@@ -237,7 +246,7 @@ export default function ContactForm() {
 
             <div className="glass p-6 rounded-2xl border border-white/5 inline-block">
               <p className="text-sm text-[color:var(--color-text-muted)] italic">
-                "I usually reply within 24 hours. Coffee's on me! ☕"
+                {t('contact.info.footer_note')}
               </p>
             </div>
           </div>
