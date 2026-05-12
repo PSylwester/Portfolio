@@ -195,7 +195,6 @@ export default function ContactForm() {
                 <div>
                   <p className="text-xs text-[color:var(--color-text-muted)] uppercase tracking-widest font-bold">
                     GitHub
-                    {t('contact.info.socials')}
                   </p>
                   <p className="text-[color:var(--color-foreground)] font-medium group-hover:text-white transition-colors">
                     PSylwester
