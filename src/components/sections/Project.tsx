@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container } from '../ui/Container';
 import { ExternalLink, Folder } from 'lucide-react';
 import { useTranslation, Trans } from 'react-i18next';
+import aiBotMockup from '@/assets/mockup_AI_BOT.png';
 
 interface Project {
   id: number;
@@ -31,9 +32,9 @@ const projects: Project[] = [
     id: 3,
     titleKey: 'projects.items.ai_bot.title',
     descKey: 'projects.items.ai_bot.description',
-    technologies: ['React', 'Redux', 'Firebase', 'Material-UI'],
+    technologies: ['Python', 'Discord.py', 'OpenAI', 'Ollama'],
     link: 'https://github.com/PSylwester/AI-discord-bot',
-    image: 'src/assets/mockup_AI_BOT.png',
+    image: aiBotMockup,
   },
 ];
 
