@@ -3,6 +3,7 @@ import { DEFAULT_NAV_ITEMS } from '@/config/navigation';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import LanguageSelector from '../ui/LanguageSelector';
 import { useTranslation } from 'react-i18next';
+import ThemeToggle from '../ui/ThemeToggle';
 
 interface NavbarProps {
   logo?: string;
@@ -11,39 +12,14 @@ interface NavbarProps {
 
 export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
   const { t } = useTranslation();
-  const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      setIsDark(false);
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    } else {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    }
-
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    setIsDark(!isDark);
-  };
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
@@ -88,13 +64,7 @@ export function Navbar({ logo, logoText = 'Sylwester' }: NavbarProps) {
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-xl dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 text-text-muted hover:text-[var(--color-foreground)] dark:hover:bg-white/10 hover:bg-black/10 transition-all cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+            <ThemeToggle />
 
             <button
               className="md:hidden text-foreground cursor-pointer"
