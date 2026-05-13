@@ -45,9 +45,9 @@
         "title": "Portfolio Website",
         "description": "A dynamic personal portfolio showcasing projects and professional experience. Built with modern web technologies featuring smooth animations and responsive design."
       },
-      "task_manager": {
-        "title": "Task Management App",
-        "description": "A productivity-focused web application for managing tasks and projects. Features drag-and-drop functionality, real-time updates, and intuitive user interface."
+      "ai_bot": {
+        "title": "Engg AI Discord Bot",
+        "description": "Multifunctional Discord bot featuring NLP modules, OpenWeather integration, and Text-to-Speech system. Automates responses and converts text into audio files."
       }
     }
   },

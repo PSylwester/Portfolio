@@ -46,9 +46,9 @@
         "title": "Strona Portfolio",
         "description": "Dynamiczne portfolio osobiste prezentujące projekty i doświadczenie zawodowe. Zbudowane z użyciem nowoczesnych technologii, charakteryzuje się płynnymi animacjami i responsywnym designem."
       },
-      "task_manager": {
-        "title": "Aplikacja do zadań",
-        "description": "Skoncentrowana na produktywności aplikacja do zarządzania zadaniami i projektami. Posiada funkcjonalność drag-and-drop, aktualizacje w czasie rzeczywistym i intuicyjny interfejs."
+      "ai_bot": {
+        "title": "Inż. Bot AI Discord",
+        "description": "Multifunkcyjny bot Discord z modułem NLP, integracją OpenWeather oraz systemem Text-to-Speech. Automatyzuje odpowiedzi i przetwarza tekst na pliki audio."
       }
     }
   },
