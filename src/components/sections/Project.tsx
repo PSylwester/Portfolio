@@ -9,6 +9,7 @@ interface Project {
   descKey: string;
   technologies: string[];
   link?: string;
+  image?: string;
 }
 
 const projects: Project[] = [
@@ -28,10 +29,11 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    titleKey: 'projects.items.task_manager.title',
-    descKey: 'projects.items.task_manager.description',
+    titleKey: 'projects.items.ai_bot.title',
+    descKey: 'projects.items.ai_bot.description',
     technologies: ['React', 'Redux', 'Firebase', 'Material-UI'],
-    link: '#',
+    link: 'https://github.com/PSylwester/AI-discord-bot',
+    image: 'src/assets/mockup_AI_BOT.png',
   },
 ];
 
@@ -56,16 +58,32 @@ export default function Projects() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
           {projects.map((project) => (
             <div
               key={project.id}
               className="glass group flex flex-col rounded-3xl border border-white/10 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] cursor-pointer"
             >
-              <div className="h-48 w-full bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-[color:var(--color-accent)]/50 to-gray-800/50 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:scale-110 transition-transform duration-500">
-                  <Folder size={80} className="text-white" />
-                </div>
+              {/* Sekcja grafiki / podglądu */}
+              <div className="h-48 w-full bg-gray-900 relative overflow-hidden border-b border-white/5">
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={t(project.titleKey)}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                    />
+                    {/* Nakładka (overlay) dla lepszego efektu hover */}
+                    <div className="absolute inset-0 bg-[color:var(--color-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </>
+                ) : (
+                  /* Fallback - stan gdy nie ma zdjęcia */
+                  <div className="absolute inset-0 bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-[color:var(--color-accent)]/20 to-gray-800/50 flex items-center justify-center">
+                    <div className="opacity-20 group-hover:scale-110 transition-transform duration-500">
+                      <Folder size={80} className="text-white" />
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="p-8 flex flex-col flex-grow">
