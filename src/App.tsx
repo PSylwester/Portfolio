@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/router';
 
-import { ThemeProvider, useTheme } from '@mui/material';
+import { ThemeProvider, useTheme } from '@mui/material/styles';
 
 const App: FunctionComponent = () => {
   const theme = useTheme();
