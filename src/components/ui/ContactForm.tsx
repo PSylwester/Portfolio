@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Send } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-export function ContactForm() {
+export default function ContactForm() {
   const { t } = useTranslation();
   const formRef = useRef<HTMLFormElement>(null);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -17,7 +18,6 @@ export function ContactForm() {
     setError(null);
 
     try {
-      // Przykład z EmailJS (pamiętaj o instalacji i kluczach w .env)
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -28,6 +28,10 @@ export function ContactForm() {
       alert(t('contact.form.success'));
       formRef.current.reset();
     } catch (err) {
+      // Bezpieczne rzutowanie dla logów lub wyciągnięcia szczegółów
+      const emailError = err as { text?: string; status?: number } | undefined;
+      console.error('EmailJS Error:', emailError?.text || err);
+
       setError(t('contact.form.error_connection'));
     } finally {
       setLoading(false);
@@ -47,11 +51,11 @@ export function ContactForm() {
           </label>
           <input
             type="text"
-            name="name" // WAŻNE: 'name' musi pasować do zmiennych w szablonie EmailJS
+            name="name"
             required
             disabled={loading}
             placeholder={t('contact.form.placeholder_name')}
-            className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] focus:border-[color:var(--color-accent)] transition-colors"
+            className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -64,7 +68,7 @@ export function ContactForm() {
             required
             disabled={loading}
             placeholder={t('contact.form.placeholder_email')}
-            className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] focus:border-[color:var(--color-accent)] transition-colors"
+            className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
           />
         </div>
       </div>
@@ -79,7 +83,7 @@ export function ContactForm() {
           required
           disabled={loading}
           placeholder={t('contact.form.placeholder_subject')}
-          className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] focus:border-[color:var(--color-accent)] transition-colors"
+          className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors"
         />
       </div>
 
@@ -91,9 +95,10 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          maxLength={1000}
           disabled={loading}
           placeholder={t('contact.form.placeholder_message')}
-          className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] focus:border-[color:var(--color-accent)] transition-colors resize-none"
+          className="dark:bg-white/5 bg-[color:var(--color-background)] border dark:border-white/10 border-black/10 rounded-xl px-4 py-3 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:border-[color:var(--color-accent)] transition-colors resize-none"
         />
       </div>
 
