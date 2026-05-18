@@ -1,5 +1,7 @@
 # 🚀 Personal Portfolio | Software Engineer
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9f47e771-21ab-4d7e-801f-fef4da63f933/deploy-status)](https://app.netlify.com/projects/sylwester-pyzik-portfolio/deploys)
+
 <p align="center">
   <img src="src/assets/portfolio-preview.png" alt="Portfolio Preview" width="70%" style="border-radius: 20px;">
 </p>
@@ -68,6 +70,10 @@ This project was built to demonstrate my proficiency in **TypeScript**, ensuring
 The choice of **Tailwind CSS** enabled the implementation of complex designs like Glassmorphism without sacrificing performance. Furthermore, the integration of **i18next** reflects an engineering mindset focused on global accessibility and scalable content management.
 
 ---
+
+# My Portfolio
+
+[![Netlify Status](https://img.shields.io/badge/Netlify-Live_Demo-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://Sylwester-Pyzik-Portfolio.netlify.app)
 
 ## 👥 Author
 
